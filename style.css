@@ -1,4 +1,4 @@
-body{
+/*body{
     margin: 0;
     padding: 0;
     background-color: #3D4952;
@@ -27,7 +27,7 @@ ul#actions{
 }
 
 a.action#logo{
-    font-family:sans-serif;
+    font-family:'Ubuntu', sans-serif;
     font-size:25px;
     color: black;
     display:inline-flex;
@@ -51,6 +51,7 @@ li.action#search{
 #searchbar{
     height:30px;
     border-radius:5px;
+    font-family: 'Asap', sans-serif;
 }
 
 a.button{
@@ -60,7 +61,7 @@ a.button{
     padding-left:20;
     padding-right:20;
     color:black;
-    font-family: sans-serif;
+    font-family: 'Asap', sans-serif;
     font-size:20px;
     border-radius:5px;
     text-decoration: none;
@@ -70,11 +71,70 @@ a.button:hover{
     background-color:cadetblue;
 }
 
-a.button#register{
-    border-radius:5px;
+a.button#regbtn{
     background-color:white;
+    
 }
 
 div#content{
     padding-top:40px;
+}*/
+body{
+    margin:0;
+    padding:0;
+/*    height:150vh;*/
+    background-color:#3D4952;
+}
+
+#nav_bar{
+    position:fixed;
+    width: 100%;
+}
+
+#sitename{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+form#search{
+    margin-left:65%;
+}
+
+#forms{
+    margin-left:5%;
+}
+
+#login{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#register{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#logout{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#profile{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#login:hover{
+    background-color:darkgray;
+}
+
+#register:hover{
+    background-color:darkgray;
+}
+
+#logout:hover{
+    background-color:darkgray;
+}
+
+#profile:hover{
+    background-color:darkgray;
 }

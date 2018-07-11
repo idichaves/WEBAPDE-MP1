@@ -1,0 +1,35 @@
+body{
+    background-color:#3D4952;
+}
+
+#sitename{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+p{
+    color: white;
+    font-family:'Ubuntu', sans-serif;
+    margin-left: 35%;
+}
+
+p.welcome{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size:40px;
+}
+
+p.prompt{
+    font-size:25px;
+}
+
+input{
+    margin-left: 35%;
+    margin-bottom: 4%;
+    width:30%;
+    display:block;
+}
+
+#signup{
+    margin-left:45%;
+    width: 10%;
+}
