@@ -14,26 +14,25 @@
     
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="copy.html" id="sitename">Memeify</a>
+            <a class="navbar-brand" href="index.html" id="sitename">Memeify</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </nav>
         
-        <form>
+        <form id="regpage">
             <div class="container">
                 <p class="welcome" id="mes">Join Memeify</p>
+            
+                <p class="prompt" id=mailprompt>Email Address</p>
+                <input class="form" type="email" placeholder="Required" id="email">
+            
+                <p class="prompt" id=passprompt>Password</p>
+                <input class="form" type="password" placeholder="Required" id="pass">
                 
-                <p class="prompt" id="name">Full Name</p>
-                <input class="form" type="text">
-            
-                <p class="prompt" id="email">Email Address</p>
-                <input class="form" type="email">
-            
-                <p class="prompt" id="password">Password</p>
-                <input class="form" type="password" id="pass">
-            
-<!--                <input class="button" type="submit" id="submitbtn">-->
+                <p class="prompt" id="description">Description</p>
+                <textarea class="form" type="text" id="desc" placeholder="Optional"></textarea>
+                
                 <button type="submit" id="signup">Sign Up</button>
             </div>
         </form>

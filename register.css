@@ -1,5 +1,11 @@
 body{
-    background-color:#3D4952;
+    background: #9053c7;
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    height:100vh;
+    
 }
 
 #sitename{
@@ -13,8 +19,8 @@ p{
 }
 
 p.welcome{
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     font-size:40px;
 }
 
@@ -22,11 +28,16 @@ p.prompt{
     font-size:25px;
 }
 
-input{
+.form{
     margin-left: 35%;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     width:30%;
-    display:block;
+    display:flex;
+}
+
+#desc{
+    height:90px;
+    text-align:left
 }
 
 #signup{

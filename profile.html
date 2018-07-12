@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
+        <script>
+            $('#userpic').css({
+                'width': $('#userpic').height(),
+            })
+        </script>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="usermaincopy.html" id="sitename">Memeify</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <form class="form-inline my-2 my-lg-0" id="search">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Enter tag/s" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Search</button>
+                </form>
+                
+                <ul class="navbar-nav mr-auto" id="forms">
+                    <li class="nav-item disabled" id="holder">
+                        <a class="nav-link" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item active" id="logout">
+                        <a class="nav-link" href="index.html" id="logoutbtn">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-md-8 profile-content">
+                    <div class='row'>                    <div class="col-sm-2 pic">
+                            <img src="images/user.png" id="userpic">
+                        </div>
+
+                        <div class="col-sm-10 details">
+                            <h5 id="username">carljames</h5>
+                            <p id="description">Hello, I am Derp.</p>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                
+                <div class="container-fluid" id="meme-content">
+                    <div class="row create-row">
+                        <div class="col-md-10 create-content-container row">
+                            <div class="col-md-1">
+                            </div>
+                        
+                            <div class="col-md-8 content">
+                                <div class="row meme">
+                                    <div class="row">
+                                        <p class="meme-header">
+                                            <strong class="meme-title">Meme#1</strong>
+                                            <span class="username">@carljames</span>
+                                        </p>
+                                    </div>
+                                
+                                    <div class="row hashtag">
+                                        <a class="btn meme-hashtag">#spiderman</a>
+                                        <a class="btn meme-hashtag">#Sampletag1</a>
+                                    </div>
+                                
+                                    <div class="row">
+                                        <div class="col img-container">
+                                            <img src="images/spongebob.png" class="img" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </body>
+</html>
