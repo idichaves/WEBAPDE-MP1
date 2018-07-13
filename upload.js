@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready( function() {
     $(document).on('change', '.btn-file :file', function() {
     var input = $(this),
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -32,4 +32,23 @@ $(document).ready(function() {
     $("#imgInp").change(function(){
         readURL(this);
     }); 	
-});
+    $('.tag-input').keyup(function(e) {
+        var tag_input = $('.tag-input').val();
+        if(e.keyCode == 13 || e.keyCode == 32) {
+
+            if(tag_input.length != 1)
+                $('.tag-field').append("<a class='btn added-tag'>#"+ tag_input+ "</a>")
+                $('.tag-input').val("");
+        }
+    })
+    $(document).on('click', '.added-tag', function() {
+        $(this).remove();
+    })
+    
+
+    $(document).on('click', '.content-img', function() {
+        console.log($(this).parent().parent().parent()[0].prop('.item-title'))
+
+    })
+})
+
