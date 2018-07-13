@@ -60,7 +60,6 @@
                 <div class="container-fluid main-container">
                     <div class="row create-row meme-container">
                         <div class="col-md-10 create-content-container row">
-                            
                             <div class="col-md-7 content view">
                                 <div class="content-item-container border-bottom">
                                     <div class="row content-item">
@@ -77,12 +76,12 @@
                                      </div>
                                     </div>
                             
-                                <div class="row">
-                                    <div class="col content-img-container">
-                                        <img src="images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview">
+                                    <div class="row">
+                                        <div class="col content-img-container">
+                                            <img src="images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         
                                 <div class="content-item-container">
                                     <div class="row content-item">
@@ -107,9 +106,26 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>            
             </div>
-        </div>            
-            </div>
+        </div>
+        
+        <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="images/spongebob.png" class="img-preview">
+                            </div>
+                            
+                        </div>
+                </div>
         </div>
     </body>
     
@@ -117,13 +133,15 @@
         $(document).ready(()=>{
             $("#search").submit((e)=>{
                 e.preventDefault();
-               
+                   
                 var input = document.getElementById('searchBox');
-                var filter = input.value.toUpperCase();
+                var filter = input.value.toLowerCase();
+                    
+//                location.href = "search.html";
                     
                 /*Insert redirect*/
                 displayPost();
-                alert(input.value);
+				alert(input.value);
             });
 				
 			function displayPost() {

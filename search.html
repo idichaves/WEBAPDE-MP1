@@ -1,0 +1,217 @@
+<html>
+        <meta charset="UTF-8"> 
+    <head>
+            <!--CSS-->
+  
+            <!--Imports-->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+            <link href="style.css" type="text/css" rel="stylesheet">          
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id=nav_bar>
+            <a class="navbar-brand" href="index.html" id="sitename">Memeify</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="form-inline my-2 my-lg-0" id=search>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Enter tag/s" aria-label="Search" id="searchBox">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
+                </form>
+                
+                <ul class="navbar-nav mr-auto" id="forms">
+                    <li class="nav-item active" id="login">
+                        <a class="nav-link" href="login.html" id="loginbtn">Login</a>
+                    </li>
+                    <li class="nav-item active" id="register">
+                        <a class="nav-link" href="register.html" id="registerbtn">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+
+        <div class="container-fluid">
+            <div class="row search-res justify-content-center">
+                <div class="col-md-10">
+                    <h1 id="search-text">Spongebob</h1>
+                </div>    
+                
+            
+            </div>
+            <div class="row create-row">
+                <div class="col-md-10 create-content-container row">
+                    
+                    <div class="col-md-3 publish view">
+                            <div class="row meme justify-content-center align-items-center">
+                                <div class="row">
+                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Upload">Upload Meme</button>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-1">
+                        
+                    </div>
+                    <div class="col-md-7 content view">
+                        <div class="content-item-container border-bottom">
+                            <div class="row content-item">
+                                <div class="col header">
+                                    <p class="item-title">Meme #1 <span class="item-username">@username
+                                            
+                                    </span></p>
+                                    <button type="button" class="btn btn-info">Share</button>
+                                </div>
+                            </div>
+                            <div class="row content-tag">
+                                <div class="col">
+                                    <a class="item-tag" href="search.html?search=Sampletag1">#Sampletag1</a>
+                                    <a class="item-tag" href="">#sampleTag2</a>
+                                    <a class="item-tag" href="">#sampleTag3</a>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col content-img-container">
+                                    <img src="images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-item-container">
+                            <div class="row content-item">
+                                <div class="col header">
+                                    <p class="item-title">Meme #2 <span class="item-username">@username</span>
+                                    </p> <button type="button" class="btn btn-info">Share</button>
+                                </div>
+                            </div>
+                            <div class="row content-tag">
+                                <div class="col">
+                                    <a class="item-tag" href="">#Sampletag1</a>
+                                    <a class="item-tag" href="">#sampleTag2</a>
+                                    <a class="item-tag" href="">#sampleTag3</a>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col content-img-container">
+                                    <img src="images/tenor.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal" id="Upload">
+                <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!--Modal Header-->
+                    <div class="modal-header">
+                    <h4 class="modal-title">Upload Meme</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!--Modal Body-->
+                    <div class="modal-body">
+                            <div class="form-group">
+                                <label>Upload Image</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-primary btn-file">
+                                            Browse... <input type="file" id="imgInp">
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" readonly>
+                                </div>
+                                <img id='img-upload'/>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="name-input">Meme Name: </label>
+                                <input type="text" class="form-control name-input" id="name-input" placeholder="Enter Meme Name">  
+                            </div>
+                            <div class="form-group">
+                                <label for="tag-input">Add Tag</label>
+                                <input type="text" class="form-control tag-input" id="tag-input" placeholder="Add Tag">  
+                            </div>
+
+                            <div class="row">
+                                <div class="col tag-field">
+                                </div>
+                            </div> 
+                        </div>
+
+                    <!--Modal Footer-->
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default">Submit</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="tenor.png" class="img-preview">
+                            </div>
+                            
+                        </div>
+                </div>
+            </div>
+                  
+        
+    
+        <!-- <div class="container1">
+            <div class="container2">
+                <div class="col-sm-8">
+                    <h2>Name of MEME1</h2>
+                    <p>
+                        <button type="button" class="btn">#Sampletag1</button>
+                        <button type="button" class="btn">#Sampletag2</button>
+                    </p>
+                    <div class="meme"><img src="tenor.png" width="100%" height="100%"></div>
+                    <br>
+                        <div class="btn-group btn-group-md" role="group">
+                                <button type="button" class="btn" style="color: blue; border-color: black;">Like</button>
+                                <button type="button" class="btn" style="color:blue; border-color: black;">Comment</button>
+                        </div>
+                        
+                    </div>    
+
+
+                <div class="col-sm-8">
+                    <h2>Name of MEME2</h2>
+                    <p>
+                            <button type="button" class="btn">#Sampletag3</button>
+                            <button type="button" class="btn">#Sampletag4</button>
+                        </p>
+                    <div class="meme"><img src="spongebob.png" width="100%" height="100%"></div>
+                    <br>
+                    <div class="btn-group btn-group-md" role="group">
+                            <button type="button" class="btn" style="color: blue; border-color: black;">Like</button>
+                            <button type="button" class="btn" style="color:blue; border-color: black;">Comment</button>
+                    </div>
+                         </div>
+                </div>
+        </div> -->
+    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+        <script src="upload.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
+</html>

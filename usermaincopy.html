@@ -71,7 +71,7 @@
                             
                             <div class="row">
                                 <div class="col content-img-container">
-                                    <img src="images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview">
+                                    <img src="images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
                                 </div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
 
                     <!--Modal Footer-->
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-default">Submit</button>
+                    <button type="button" class="btn btn-default" id="post">Submit</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <img src="tenor.png" class="img-preview">
+                                <img src="images/spongebob.png" class="img-preview">
                             </div>
                             
                         </div>
@@ -175,7 +175,9 @@
                     e.preventDefault();
                    
                     var input = document.getElementById('searchBox');
-                    var filter = input.value.toUpperCase();
+                    var filter = input.value.toLowerCase();
+                    
+//                    location.href="search.html";
                     
                     /*Insert redirect*/
                     displayPost();

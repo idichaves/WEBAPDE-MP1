@@ -359,6 +359,10 @@ form#search{
     width: 100%;
 }
 
+#meme-image:hover{
+   cursor: pointer; 
+}
+
 #login-button{
     border-radius:5px;
     font-size:20px;
@@ -371,4 +375,11 @@ form#search{
     margin-top: 40px;
     font-size: 20px;
     color: white;
+}
+
+.search-res {
+  padding-top: 5%;  
+  padding-bottom: 20px;  
+  background-color: #5c9ccf;
+  color: white;
 }

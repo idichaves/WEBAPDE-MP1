@@ -1,4 +1,7 @@
 $(document).ready( function() {
+    var search = getQueryString('search')
+    $('#search-text').html(search)
+
     $(document).on('change', '.btn-file :file', function() {
     var input = $(this),
         label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -47,8 +50,13 @@ $(document).ready( function() {
     
 
     $(document).on('click', '.content-img', function() {
-        console.log($(this).parent().parent().parent()[0].prop('.item-title'))
-
+        var parent = $(this).parent().parent().parent()[0].children
+        $('.modal-title').html(parent[0].children[0].children[0].childNodes[0].data)
+        $('.img-preview').attr('src', $(this).attr('src'))
+    })
+    $("#post").on('click',function(e){
+        e.preventDefault();
+        alert("Successfully Uploaded!");
+        location.reload(false);
     })
 })
-
