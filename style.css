@@ -383,3 +383,8 @@ form#search{
   background-color: #5c9ccf;
   color: white;
 }
+
+.goodbye#mess{
+    font-size: 30px;
+    color: white;
+}

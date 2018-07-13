@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
+        <script src="jquery-3.3.1.js"></script>
+        
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id=nav_bar>
+            <a class="navbar-brand" href="index.html" id="sitename">Memeify</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="form-inline my-2 my-lg-0" id=search>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Enter tag/s" aria-label="Search" id="searchBox">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
+                </form>
+                
+                <ul class="navbar-nav mr-auto" id="forms">
+                    
+                    <li class="nav-item active" id="register">
+                        <a class="nav-link" href="register.html" id="registerbtn">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container-fluid main-container">
+            <div class="row justify-content-center">
+                <p class="goodbye" id="mess">You have been successfully logged out.</p>
+            </div>
+        </div>
+    </body>
+    <script src="login.js"></script>
+    <script type="text/javascript" src="bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $("#search").submit((e)=>{
+                e.preventDefault();
+               
+                var input = document.getElementById('searchBox');
+                var filter = input.value.toUpperCase();
+                    
+                /*Insert redirect*/
+                displayPost();
+                alert(input.value);
+            });
+				
+			function displayPost() {
+                var divRowMeme = document.createElement("div");
+                var divTitleRow = document.createElement("div");
+                var divTagRow = document.createElement("div");
+                var divImageRow = document.createElement("div");
+                var divImageContainer = document.createElement("div");
+            
+                var paragraph = document.createElement("p");
+                var title = document.createElement("strong");
+                var user = document.createElement("span");
+                var tag = document.createElement("a");
+                var image = document.createElement("img");
+                var bar = document.createElement("hr");
+                    
+                $(image).attr('src', "images/spongebob.png");
+                $(image).attr('alt', "");
+                $(image).addClass("img");
+                
+                $(tag).addClass("btn meme-hashtag");
+                $(tag).attr('id', "searchTag");
+                $(tag).text("AnotherTag");
+                    
+                $(user).addClass("username");
+                $(user).text("@anotherPerson");
+                    
+                $(title).addClass("meme-title");
+                $(title).text("Meme#2");
+                    
+                $(divRowMeme).addClass("row meme");
+                $(divTitleRow).addClass("row");
+                $(paragraph).addClass("meme-header");
+                $(divTagRow).addClass("row hashtag");
+                $(divImageRow).addClass("row");
+                $(divImageContainer).addClass("col img-container");
+                
+                $(paragraph).append(title);
+                $(paragraph).append(user);
+                $(divTitleRow).append(paragraph);
+                    
+                $(divTagRow).append(tag);
+                    
+                $(divImageContainer).append(image);
+                $(divImageRow).append(divImageContainer);
+                    
+                $(divRowMeme).append(divTitleRow);
+                $(divRowMeme).append(divTagRow);
+                $(divRowMeme).append(divImageRow);
+                
+                $("#content").append(divRowMeme);
+	            $("#content").append(bar);
+				console.log(tag.text);
+            };
+        });
+			
+        </script>
+    
+    <script>
+        setInterval(function(){
+            location.href="index.html";
+        }, 3*1000);
+    </script>
+</html>
