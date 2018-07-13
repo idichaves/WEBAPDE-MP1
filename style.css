@@ -15,6 +15,20 @@ body, html{
   background-attachment: fixed;
 }
 
+.nav {
+  background-color: white;
+
+}
+
+.create-content-container {
+  /* background-color: #fefefe; */
+  border-radius: 5px;
+  /* box-shadow: 0 0 5px rgba(0,0,0, .6); */
+  margin-top:5%;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 #nav_bar{
     position:fixed;
     z-index: 1;
@@ -81,36 +95,6 @@ form#search{
 
 }
 
-.container1{
-  width: 100%;  
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
-}
-
-.container2{
-  margin-top: 5%;
-  width: 55%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background: #ffffff;
-  border-radius: 8px;
-}
-
 .welcome#mes{
     font-size: 30px;
     color:white;
@@ -131,12 +115,6 @@ form#search{
   justify-content: space-between;
   padding: 177px 130px 33px 95px;
 }
-
-
-.content{
-  height:100vh;
-}
-
 
 #username{
     font-size: 30px;
@@ -169,25 +147,15 @@ form#search{
     background-color:#f5f5f5;
 }
 
-.nav {
-  background-color: white;
-
-}
-
-.create-content-container {
-  /* background-color: #fefefe; */
-  border-radius: 5px;
-  /* box-shadow: 0 0 5px rgba(0,0,0, .6); */
-  margin-top:5%;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
 .publish, .content {
   background-color: #FEFEFE;
   
   border-radius: 10px;
   justify-content: center;
+}
+
+#upload{
+    height:7.5%;
 }
 
 .title{
@@ -199,7 +167,6 @@ form#search{
 }
 
 .meme {
-  margin-top:
   padding: 20px;
 }
 
@@ -216,13 +183,30 @@ form#search{
   color: #a1a1a1;
 }
 
-.meme-hashtag {
+.meme-hashtag, .added-tag {
   text-decoration: none;
   color: rgb(var(--violet));
   background-color: rgb(221, 221, 221);
   border-radius: 15px !important;
   transition: .3s ease;
-  
+}
+
+.added-tag{
+    text-decoration: none;
+    color: rgb(var(--violet));
+    background-color: rgb(221, 221, 221);
+    border-radius: 15px !important;
+    transition: .3s ease;
+    margin: 5px;
+}
+
+.tag-field{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.added-tag:hover{
+    cursor: pointer;
 }
 
 .hashtag{
@@ -230,7 +214,7 @@ form#search{
 }
 
 .meme-hashtag:hover {
-  box-shadow: 0 0 5spx rgba(0,0,0,.4);
+  box-shadow: 0 0 5px rgba(0,0,0,.4);
 }
 
 .img-container {
@@ -242,10 +226,6 @@ form#search{
 .img {
   max-width: 100%;
   transition: .3s;
-}
-
-.img-container:hover img {
-  transform: scale(1.1);
 }
 
 .create-row {
