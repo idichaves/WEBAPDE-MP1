@@ -17,7 +17,6 @@ body, html{
 
 .nav {
   background-color: white;
-
 }
 
 .create-content-container {
@@ -287,12 +286,14 @@ form#search{
 
 #login-button{
     border-radius:5px;
-    font-size:25px;
+    font-size:20px;
     text-decoration: none;
     color: black;
     background-color:white;
 }
 
-#login-button:hover{
-    background-color: dimgray;
+.prompt{
+    margin-top: 40px;
+    font-size: 20px;
+    color: white;
 }
