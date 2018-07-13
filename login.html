@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap.css">
         <link rel="stylesheet" href="style.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
+        <script src="jquery-3.3.1.js"></script>
+        
     </head>
     
     <body>
@@ -25,16 +27,25 @@
                 </form>
                 
                 <ul class="navbar-nav mr-auto" id="forms">
-                    <li class="nav-item active" id="login">
-                        <a class="nav-link" href="login.html" id="loginbtn">Login</a>
-                    </li>
+                    
                     <li class="nav-item active" id="register">
                         <a class="nav-link" href="register.html" id="registerbtn">Register</a>
                     </li>
                 </ul>
             </div>
         </nav>
+        
+        <div class="container-fluid main-container">
+            <div class="row justify-content-center">
+                <form id="login-form">
+                <p class="welcome" id="mes">Sign into Memeify</p>
+                    <input type="text" placeholder="Username" id="user-login">
+                    <input type="password" placeholder="Password" id="pass-login">
+                    <a href="usermaincopy.html" id="login-button">Login</a>
+                </form>
+            </div>
+        </div>
     </body>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="login.js"></script>
     <script type="text/javascript" src="bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
 </html>

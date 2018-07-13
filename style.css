@@ -17,7 +17,14 @@ body, html{
 
 #nav_bar{
     position:fixed;
+    z-index: 1;
     width: 100%;
+}
+
+.main-container{
+   margin-top:5%;
+   position:absolute;
+   z-index: 0;
 }
 
 #sitename{
@@ -104,6 +111,10 @@ form#search{
   border-radius: 8px;
 }
 
+.welcome#mes{
+    font-size: 30px;
+    color:white;
+}
 
 .login{
   width: 960px;
@@ -162,12 +173,12 @@ form#search{
   background-color: white;
 
 }
+
 .create-content-container {
   /* background-color: #fefefe; */
-
   border-radius: 5px;
   /* box-shadow: 0 0 5px rgba(0,0,0, .6); */
-  margin-top: 5%;
+  margin-top:5%;
   justify-content: center;
   margin-bottom: 20px;
 }
@@ -247,7 +258,6 @@ form#search{
   margin-right: 0;
 }
 
-
 .btn-file {
   position: relative;
   overflow: hidden;
@@ -278,61 +288,31 @@ form#search{
   .file-field.big-2 .file-path-wrapper .file-path {
     height: 3.5rem; }
 
-/* 
-.container1{
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  
+#login-form{
+    margin-top: 10px;;
 }
 
-.container2{
-  position: relative;
-  width: 50%;
-  min-height: 100vh;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background: #ffffff;
+#user-login{
+    margin-top: 30px;
+    display:flex;
+    margin-bottom: 30px;
+    width: 100%;
 }
 
-
-.col-sm-8{
-  background-color: pink;
+#pass-login{
+    display:flex;
+    margin-bottom: 30px;
+    width: 100%;
 }
 
-.btn-file {
-  position: relative;
-  overflow: hidden;
-}
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;
-  background: white;
-  cursor: inherit;
-  display: block;
+#login-button{
+    border-radius:5px;
+    font-size:25px;
+    text-decoration: none;
+    color: black;
+    background-color:white;
 }
 
-#img-upload{
-  width: 100%;
+#login-button:hover{
+    background-color: dimgray;
 }
-
-input[name="file"] */
