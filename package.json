@@ -1,0 +1,26 @@
+{
+  "name": "webapde-mp1",
+  "version": "1.0.0",
+  "description": "This is a meme site called Memeify. It was developed as a requirement for **WEBAPDE**.",
+  "main": "jquery-3.3.1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idichaves/WEBAPDE-MP1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idichaves/WEBAPDE-MP1/issues"
+  },
+  "homepage": "https://github.com/idichaves/WEBAPDE-MP1#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.5",
+    "path": "^0.12.7"
+  }
+}

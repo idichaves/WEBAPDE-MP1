@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="register.css" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
         <script type="text/javascript" src="bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
     </head>
@@ -20,21 +20,44 @@
             </button>
         </nav>
         
-        <form id="regpage">
-            <div class="container">
-                <p class="welcome" id="mes">Join Memeify</p>
+        <div class="container-fluid main-container">
+                <div class="create-content-container row">
+                    <div class="content view row justify-content-center">
+                        <form method="post" action="register" id="regpage">
+                            <p class="welcome" id="mes">Join Memeify</p>
+                    
+                            <p class="prompt">Username</p>
+                            <input type="text" name="username" placeholder="Required" id="user">
+                        
+                            <p class="prompt">Password</p>
+                            <input type="password" name="password" placeholder="Required" id="pass">
+                        
+                            <p class="prompt" id="description">Description</p>
+                            <textarea class="form" name="desc" type="text" id="desc" placeholder="Optional"></textarea>
+
+                            <input type="submit" id="signup" value="Register">
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+        <!-- <div class="create-content-container row">
+            <form id="regpage">
+                <div class="container">
+                    <p class="welcome" id="mes">Join Memeify</p>
             
-                <p class="prompt" id=mailprompt>Email Address</p>
-                <input class="form" type="email" placeholder="Required" id="email">
+                    <p class="prompt" id=mailprompt>Email Address</p>
+                    <input class="form" type="email" placeholder="Required" id="email">
             
-                <p class="prompt" id=passprompt>Password</p>
-                <input class="form" type="password" placeholder="Required" id="pass">
+                    <p class="prompt" id=passprompt>Password</p>
+                    <input class="form" type="password" placeholder="Required" id="pass">
                 
-                <p class="prompt" id="description">Description</p>
-                <textarea class="form" type="text" id="desc" placeholder="Optional"></textarea>
+                    <p class="prompt" id="description">Description</p>
+                    <textarea class="form" type="text" id="desc" placeholder="Optional"></textarea>
                 
-                <button type="submit" id="signup">Sign Up</button>
-            </div>
-        </form>
+                    <button type="submit" id="signup">Sign Up</button>
+                </div>
+            </form>
+        </div> -->
     </body>
 </html>
