@@ -2,15 +2,26 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const path = require("path");
+const sesssion = require("express-session");
+const cookieparser = require("cookie-parser");
+const hbs = require("hbs");
+//const {User} = require(".model/");
 
 const app = express();
-const port = 3000;
 
-var urlencoder = bodyparser.urlencoded({
+const urlencoder = bodyparser.urlencoded({
     extended: false
 });
 
+const port = 3000;
+
+app.set("view-engine", "hbs")
+
 var users = []
+
+app.use(express.static("root/../css/"))
+app.use(express.static("root/../js/"))
+app.use(express.static("root/../views/"))
 
 app.use("/", (req, res, next) => {
     console.log("USE /")
@@ -20,19 +31,50 @@ app.use("/", (req, res, next) => {
 app.post("/login", urlencoder, (req, res) => {
     console.log("POST /login")
     
+    //get info
     var username = req.body.username;
     var password = req.body.password;
+
+    //cookie
+
+    //search into database
+    //if exists, move to home page
+    //else show user does not exist
+    
 });
 
 app.post("/register", urlencoder, (req, res) => {
     console.log("POST /register")
 
+    //get inputs
     var username = req.body.username;
     var password = req.body.password;
     var desc = req.body.desc;
+
+    //add into database
+    //if success, else
 });
 
+// app.post("/post", urlencoder, (req, res) => {
+//
+// })
+
+// app.put("/edit", urlencoder, (req, res) => {
+
+// })
+
+// app.delete("/remove", urlencoder, (req, res) => {
+
+// })
+
 app.get("/", (req, res) => {
+    console.log("GET /")
+    var username = req.session.username
+
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/index.html", (req, res) => {
     console.log("GET /")
 
     res.sendFile(path.join(__dirname, "index.html"));
@@ -48,10 +90,6 @@ app.get("/register.html", (req, res) => {
     console.log("GET /register.html")
     
     res.sendFile(path.join(__dirname, "register.html"));
-});
-
-app.get("/style.css", (req, res) => {
-    res.sendFile(path.join(__dirname, "style.css"));
 });
 
 app.use("*", (req, res) => {
