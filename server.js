@@ -22,6 +22,10 @@ var users = []
 app.use(express.static("root/../css/"))
 app.use(express.static("root/../js/"))
 app.use(express.static("root/../views/"))
+//for cookie
+app.use(session({
+    secret: ""
+}));
 
 app.use("/", (req, res, next) => {
     console.log("USE /")
