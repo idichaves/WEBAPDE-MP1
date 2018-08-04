@@ -1,3 +1,4 @@
+/****IMPORTS***********************/
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
@@ -7,6 +8,9 @@ const cookieparser = require("cookie-parser");
 const hbs = require("hbs");
 //const {User} = require(".model/");
 
+
+
+/****SETUP***********************/
 const app = express();
 
 const urlencoder = bodyparser.urlencoded({
@@ -19,13 +23,14 @@ app.set("view-engine", "hbs")
 
 var users = []
 
-app.use(express.static("root/../css/"))
-app.use(express.static("root/../js/"))
+app.use(express.static(__dirname + "/public"))
 app.use(express.static("root/../views/"))
+app.use(express.static("root/../images/"))
+app.use(express.static("root/../bootstrap-4.1.1-dist/"))
 //for cookie
-app.use(session({
-    secret: ""
-}));
+// app.use(session({
+//     secret: ""
+// }));
 
 app.use("/", (req, res, next) => {
     console.log("USE /")
@@ -73,27 +78,45 @@ app.post("/register", urlencoder, (req, res) => {
 
 app.get("/", (req, res) => {
     console.log("GET /")
-    var username = req.session.username
+    //var username = req.session.username
 
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.render("index.hbs")
 });
 
-app.get("/index.html", (req, res) => {
-    console.log("GET /")
+app.get("/index", (req, res) => {
+    console.log("GET /index")
 
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.redirect("/")
 });
 
-app.get("/login.html", (req, res) => {
-    console.log("GET /login.html")
+app.get("/login", (req, res) => {
+    console.log("GET /login")
 
-    res.sendFile(path.join(__dirname, "login.html"));
+    res.render("login.hbs")
 });
 
-app.get("/register.html", (req, res) => {
-    console.log("GET /register.html")
+app.get("/register",(req, res) => {
+    console.log("GET /register")
     
-    res.sendFile(path.join(__dirname, "register.html"));
+    res.render("register.hbs")
+});
+
+app.get("/profile",(req, res) => {
+    console.log("GET /profile")
+    
+    res.render("profile.hbs")
+});
+
+app.get("/usermaincopy", (req, res) => {
+    console.log("GET /usermaincopy")
+    
+    res.render("usermaincopy.hbs")
+});
+
+app.get("/logout", (req, res) => {
+    console.log("GET /logout")
+    
+    res.render("logout.hbs")
 });
 
 app.use("*", (req, res) => {

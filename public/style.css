@@ -1,0 +1,399 @@
+:root {
+  --violet: 200, 80, 192;
+  --blue: 65,88,208;
+}
+
+body, html{
+  margin:0;
+  padding: 0;
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, rgb(var(--violet)), rgb(var(--blue)));
+  background: -o-linear-gradient(-135deg,rgb(var(--violet)), rgb(var(--blue)));
+  background: -moz-linear-gradient(-135deg,rgb(var(--violet)), rgb(var(--blue)));
+  background: linear-gradient(-135deg, rgb(var(--violet)), rgb(var(--blue)));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.nav {
+  background-color: white;
+}
+
+.create-content-container {
+  /* background-color: #fefefe; */
+  border-radius: 5px;
+  /* box-shadow: 0 0 5px rgba(0,0,0, .6); */
+  margin-top:5%;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#nav_bar{
+    position:fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+.item-title {
+  color: black;
+  font-size: 1.5em;
+}
+
+.item-username {
+  color: rgb(153, 153, 153);
+}
+
+.publish {
+  height: 150px;
+  background-color: #FEFEFE;
+}
+
+.view {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .6);
+}
+
+.img-preview{
+  max-width: 100%;
+  width: 100%;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: #FEFEFE;
+  
+}
+
+.content-img-container {
+  padding-top: 20px;
+}
+
+.item-tag, .added-tag {
+  text-decoration: none;
+  color: rgb(var(--violet));
+  background-color: rgb(221, 221, 221);
+  border-radius: 15px !important;
+  transition: .3s ease;
+}
+
+.item-tag{
+  padding: 10px;
+}
+
+.item-tag:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,.4);
+}
+
+.main-container{
+   margin-top:3%;
+   position:absolute;
+   z-index: 0;
+}
+
+.meme-container{
+    margin-top:3%;
+}
+
+#sitename{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+form#search{
+    margin-left:60%;
+}
+
+#forms{
+    margin-left:5%;
+}
+
+#login{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#register{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#logout{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#profile{
+    border-radius: 5px;
+    font-family: 'Asap', sans-serif;
+}
+
+#login:hover{
+    background-color:darkgray;
+}
+
+#register:hover{
+    background-color:darkgray;
+}
+
+#logout:hover{
+    background-color:darkgray;
+}
+
+#profile:hover{
+    background-color:darkgray;
+}
+
+.limiter{
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+.welcome#mes{
+    font-size: 30px;
+    color:black;
+}
+
+.login{
+  width: 960px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 177px 130px 33px 95px;
+}
+
+#username{
+    font-size: 30px;
+}
+
+.pic{
+    display: flex;
+    justify-content: center;
+}
+
+#userpic{
+    border-radius: 500px;
+    background-color:lightgray;
+    height: 100px;
+}
+
+#details{
+    display:inline-flex;
+}
+
+#memecont{
+    margin-top:2.5%;
+}
+
+.profile-content{
+    padding-top:20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    background-color:#f5f5f5;
+}
+
+.publish, .content {
+  background-color: #FEFEFE;
+  
+  border-radius: 10px;
+  justify-content: center;
+}
+
+#upload{
+    height:7.5%;
+}
+
+.title{
+  color:black;
+}
+
+.title:hover{
+  text-decoration: none;
+}
+
+.meme {
+  padding: 20px;
+  height: 100%;
+}
+
+.meme-header {
+  font-size: 1.5em;
+  padding-left:15px;
+}
+
+.create-content {
+  padding: 20px;
+}
+
+.username {
+  color: #a1a1a1;
+}
+
+.meme-hashtag, .added-tag {
+  text-decoration: none;
+  color: rgb(var(--violet));
+  background-color: rgb(221, 221, 221);
+  border-radius: 15px !important;
+  transition: .3s ease;
+}
+
+.added-tag{
+    text-decoration: none;
+    color: rgb(var(--violet));
+    background-color: rgb(221, 221, 221);
+    border-radius: 15px !important;
+    transition: .3s ease;
+    margin: 5px;
+}
+
+.tag-field{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.added-tag:hover{
+    box-shadow: 0 0 5px rgba(0,0,0,.4);
+    cursor: pointer;
+}
+
+.content-img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.content-item-container {
+  /* border-bottom-width: 2px;
+  border-bottom-style: solid; */
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.hashtag{
+  margin-left:20px;
+}
+
+.meme-hashtag:hover {
+  box-shadow: 0 0 5px rgba(0,0,0,.4);
+}
+
+.img-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.img {
+  max-width: 100%;
+  transition: .3s;
+}
+
+.create-row {
+  display: flex;  
+  justify-content: center;
+}
+
+.row.meme {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+#img-upload{
+  width: 100%;
+}
+
+.file-field.big-2 .file-path-wrapper {
+  height: 3.7rem; }
+  .file-field.big-2 .file-path-wrapper .file-path {
+    height: 3.5rem; }
+
+#login-form{
+    margin-top: 10px;;
+}
+
+#user-login{
+    margin-top: 30px;
+    display:flex;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#pass-login{
+    display:flex;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+#meme-image:hover{
+   cursor: pointer; 
+}
+
+#login-button{
+    border-radius:5px;
+    font-size:20px;
+    text-decoration: none;
+    color: black;
+    background-color:darkgray;
+
+}
+
+.prompt{
+    margin-top: 40px;
+    font-size: 20px;
+    color: black;
+}
+
+.search-res {
+  padding-top: 5%;  
+  padding-bottom: 20px;  
+  background-color: #5c9ccf;
+  color: white;
+}
+
+.goodbye#mess{
+    font-size: 30px;
+    color: black;
+}
+
+#desc{
+  display:block;
+}
+
+#signup{
+  margin-top: 5%;
+}
