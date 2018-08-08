@@ -72,6 +72,34 @@ app.post("/register", urlencoder, (req, res) => {
     res.render("login.hbs")
 });
 
+app.post("/upload", urlencoder, (req, res) => {
+    console.log("POST /upload")
+
+    var title = req.body.title
+
+    //res.render("usermaincopy.hbs")
+})
+
+app.post("/edit", urlencoder, (req, res) => {
+    console.log("POST /edit")
+
+    //res..render
+})
+
+// app.post("/delete", urlencoder, (req, res) => {
+//     console.log("POST /delete")
+
+//     res.render("")
+// })
+
+app.get("/search", urlencoder, (req, res) => {
+    console.log("GET /search")
+
+    var search = req.query.searchString
+
+    res.render("index.hbs")
+})
+
 app.get("/", (req, res) => {
     console.log("GET /")
     //var username = req.session.username

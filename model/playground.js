@@ -122,12 +122,14 @@ module.exports = {
     addPost: function (title, tags, img, public, sharedwith, postedBy){
         var obTags = []
 
-        tags.forEach(element => {
-            obTags.push(this.addTag(element))
-        });
+        for (let i = 0; i < tags.length; i++){
+            var obj = this.addTag(tags[i])
+            if (obj)
+                obTags.push(obj)
+        }
 
         var post = new Post({
-            title, obTags, img, public, sharedwith, postedBy
+            title, ags, img, public, sharedwith, postedBy
         })
 
         post.save().then((newPost) => {
