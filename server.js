@@ -21,6 +21,7 @@ const port = 3000;
 app.set("view-engine", "hbs")
 
 app.use(express.static(__dirname + "/public"))
+app.use(express.static(__dirname + "/images"))
 
 //for cookie
 // app.use(session({
