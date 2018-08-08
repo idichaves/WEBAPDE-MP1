@@ -1,7 +1,8 @@
 const mongoose = require("mongoose")
 const crypto = require("crypto-js")
+const Schema = mongoose.Schema
 
-var UserSchema = mongoose.Schema({
+var UserSchema = new Schema({
     username:{
         type:String,
         required:true,
@@ -24,7 +25,7 @@ var UserSchema = mongoose.Schema({
     }
 })
 
-// var PostSchema = mongoose.Schema({
+// var PostSchema = new Schema({
 //     title:{
 //         type:String,
 //         required:true

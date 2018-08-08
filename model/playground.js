@@ -9,21 +9,31 @@ mongoose.connect("mongodb://localhost:27017/memeify", {
 });
 
 module.exports = {
-    addUser: function(user){
+    addUser: function(username, password, desc){
+        var user = new User({
+            username, password, desc
+        })
+
         user.save().then((newUser) => {
-            // success
             console.log("Successfully added user " + newUser)
+
+            return true
         }, (err) => {
-            // fail
-            console.log("Something went wrong. Please try again.")
+            console.log("addUser " + err)
+
+            return false
         })
     },
 
     retrieveUsers: function (){
         User.find().then((users) => {
             console.log("Retrieved users: " + users)
+
+            return true
         }, (err) => {
-            console.log("Something went wrong."  + err)
+            console.log("retrieveUsers "  + err)
+
+            return false
         })
     },
 
@@ -32,8 +42,26 @@ module.exports = {
             _id: id
         }).then((result) => {
             console.log("Retrieved user: " + result.username)
+
+            return true
         }, (err) => {
-            console.log("Something went wrong." + err)
+            console.log("retrieveUser " + err)
+
+            return false
+        })
+    },
+
+    retrieveUserWithUsername: function(username){
+        User.findOne({
+            username
+        }).then((result) => {
+            console.log("Retrieved user: " + result.username)
+
+            return true
+        }, (err) => {
+            console.log("retrieveUserWithUsername " + err)
+
+            return false
         })
     },
 
@@ -43,17 +71,41 @@ module.exports = {
         }, {
             desc: newDesc
         }).then((result) => {
-            console.log("Updated a user" + result.username)
+            console.log("Updated a user")
+
+            return true
         }, (err) => {
-            console.log("Something went wrong." + err)
+            console.log("updateUserDesc " + err)
+
+            return false
         })
     },
 
-    addPost: function (post){
+    updateUserDescWithUsername: function(username, newDesc){
+        User.findOneAndUpdate({
+            username
+        }, {
+            desc: newDesc
+        }).then((result) => {
+            console.log("Updated a user")
+
+            return true
+        }, (err) => {
+            console.log("updateUserDescWithUsername " + err)
+
+            return false;
+        })
+    },
+
+    addPost: function (title, tags, public, sharedwith, postedBy){
+        var post = new Post({
+            title, tags, public, sharedwith, postedBy
+        })
+
         post.save().then((newPost) => {
             console.log("Successfully added post " + newPost)
         }, (err) => {
-            console.log("Something went wrong." + err)
+            console.log("addPost " + err)
         })
     },
 
@@ -61,7 +113,17 @@ module.exports = {
         Post.find().then((posts) => {
             console.log("Retrieved posts")
         }, (err) => {
-            console.log(err)
+            console.log("retrievePosts " + err)
+        })
+    },
+
+    retrievePostsWithUserID: function(id){
+        Post.find({
+            postedBy: id
+        }).then((posts) => {
+            console.log("Successfully retrieved posts")
+        }, (err) => {
+            console.log("retrievePostsWithUserID" + err)
         })
     },
 

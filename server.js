@@ -7,7 +7,7 @@ const session = require("express-session");
 const cookieparser = require("cookie-parser");
 const hbs = require("hbs");
 const crypto = require("crypto");
-const ops = require("./model/playground.js")
+const {ops} = require("./model/playground.js")
 //const {User} = require(".model/");
 
 /****SETUP***********************/
@@ -66,23 +66,11 @@ app.post("/register", urlencoder, (req, res) => {
 
     var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
 
-
     //add into database
-    //if success, else
+    
+    //if success, res.render("login.hbs") else res.render("register.hbs")
     res.render("login.hbs")
 });
-
-// app.post("/post", urlencoder, (req, res) => {
-//
-// })
-
-// app.put("/edit", urlencoder, (req, res) => {
-
-// })
-
-// app.delete("/remove", urlencoder, (req, res) => {
-
-// })
 
 app.get("/", (req, res) => {
     console.log("GET /")

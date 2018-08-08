@@ -10,6 +10,10 @@ var PostSchema = mongoose.Schema({
         type:Array
     },
 
+    img:{
+        type:Buffer
+    },
+
     public:{
         type:Boolean
     },
