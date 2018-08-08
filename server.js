@@ -6,7 +6,8 @@ const path = require("path");
 const session = require("express-session");
 const cookieparser = require("cookie-parser");
 const hbs = require("hbs");
-const crypt = require("crypto-js");
+const crypto = require("crypto");
+const ops = require("./model/playground.js")
 //const {User} = require(".model/");
 
 /****SETUP***********************/
@@ -17,6 +18,11 @@ const urlencoder = bodyparser.urlencoded({
 });
 
 const port = 3000;
+
+// mongoose.Promise = global.Promise
+// mongoose.connect("mongodb://localhost:27017/memeify", {
+//     useNewUrlParser: true
+// });
 
 app.set("view-engine", "hbs")
 
@@ -40,6 +46,8 @@ app.post("/login", urlencoder, (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
 
+    //use retrieve operation from playground then unhash password
+
     //cookie
 
     //search into database
@@ -55,6 +63,9 @@ app.post("/register", urlencoder, (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
     var desc = req.body.desc;
+
+    var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
+
 
     //add into database
     //if success, else

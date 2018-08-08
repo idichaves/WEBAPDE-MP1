@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto");
-const {User} = require(".model/user.js")
-const {Post} = require(".model/post.js")
+const {User} = require("./user.js")
+const {Post} = require("./post.js")
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/memeify", {

@@ -19,7 +19,12 @@ var PostSchema = mongoose.Schema({
     },
 
     postedBy:{
-        
+        type:Object
+    },
+    
+    datePosted:{
+        type:Date,
+        default: Date.now
     }
 })
 

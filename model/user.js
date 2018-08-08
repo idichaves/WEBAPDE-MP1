@@ -24,33 +24,33 @@ var UserSchema = mongoose.Schema({
     }
 })
 
-var PostSchema = mongoose.Schema({
-    title:{
-        type:String,
-        required:true
-    },
+// var PostSchema = mongoose.Schema({
+//     title:{
+//         type:String,
+//         required:true
+//     },
 
-    public:{
-        type:Boolean
-    },
+//     public:{
+//         type:Boolean
+//     },
 
-    tags:{
-        type:Array
-    },
+//     tags:{
+//         type:Array
+//     },
 
-    sharedwith:{
-        type:Array
-    },
+//     sharedwith:{
+//         type:Array
+//     },
 
-    postedBy:{
-        type:Object
-    }
-})
+//     postedBy:{
+//         type:Object
+//     }
+// })
 
 var User = mongoose.model("user", UserSchema)
-var Post = mongoose.model("post", PostSchema)
+// var Post = mongoose.model("post", PostSchema)
 
 module.exports = {
-    User,
-    Post
+    User
+    // Post
 }
