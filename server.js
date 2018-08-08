@@ -20,8 +20,6 @@ const port = 3000;
 
 app.set("view-engine", "hbs")
 
-var users = []
-
 app.use(express.static(__dirname + "/public"))
 
 //for cookie
@@ -78,28 +76,28 @@ app.get("/", (req, res) => {
     console.log("GET /")
     //var username = req.session.username
 
-    res.render("index.hbs")
+    res.sendFile(path.join(__dirname, "index.html"))
 });
 
 app.get("/index", (req, res) => {
     console.log("GET /index")
 
     res.redirect("/")
-});
+})
 
 app.get("/login", (req, res) => {
     console.log("GET /login")
 
-    res.render("login.hbs")
+    res.sendFile(path.join(__dirname, "login.html"))
 });
 
 app.get("/register",(req, res) => {
     console.log("GET /register")
     
-    res.render("register.hbs")
+    res.sendFile(path.join(__dirname, "register.html"))
 });
 
-app.get("/profile",(req, res) => {
+app.get("/profile", (req, res) => {
     console.log("GET /profile")
     
     res.render("profile.hbs")
@@ -120,37 +118,13 @@ app.get("/usermaincopy", (req, res) => {
 app.get("/logout", (req, res) => {
     console.log("GET /logout")
     
-    res.render("logout.hbs")
+    res.sendFile(path.join(__dirname, "logout.html"))
 });
 
 app.use("*", (req, res) => {
     res.status(404).send("There is no such page")
     //add new html file for Error 404 page.
 });
-
-function findUser(){
-
-}
-
-function findAllUsers(){
-
-}
-
-function findPost(){
-
-}
-
-function findAllPosts(){
-
-}
-
-function deletePost(){
-
-}
-
-function addPost(){
-
-}
 
 app.listen(port, () => {
     console.log("Listening in port " + port);
