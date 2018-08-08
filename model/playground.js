@@ -66,13 +66,12 @@ module.exports = {
         })
     },
 
-    updateUserPost: function(userid, postid, tags, public, sharedwith){
-        this.updatePost(postid, tags, public, sharedwith)
+    updateUserPost: function(userid, postid, public, sharedwith){
+        this.updatePost(postid, public, sharedwith)
         var posts = this.retrieveUserPosts(userid)
         
         for (var i = 0; i < posts.length; i++){
             if (posts[i]._id === postid){
-                posts[i].tags = tags
                 posts[i].public = public
                 posts[i].sharedwith = sharedwith
                 break;
@@ -176,15 +175,28 @@ module.exports = {
         })
     },
 
-    retrievePostWithTag: function(tag){
-        Post.find()
+    addTag: function(){
+
     },
 
-    updatePost: function(id, tags, public, sharedwith){
+    retrieveAllTags: function(){
+
+    },
+
+    searchByTag: function(id){
+
+    },
+
+    searchByTagString: function(tag){
+        var posts = this.retrievePosts()
+        
+
+    },
+
+    updatePost: function(id, public, sharedwith){
         Post.findOneAndUpdate({
             _id: id
         }, {
-            tags,
             public,
             sharedwith
         }).then((result) => {
