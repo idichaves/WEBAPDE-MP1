@@ -30,12 +30,12 @@ var PostSchema = mongoose.Schema({
         required:true
     },
 
-    tags:{
-        type:Array
-    },
-
     public:{
         type:Boolean
+    },
+
+    tags:{
+        type:Array
     },
 
     sharedwith:{
@@ -43,23 +43,14 @@ var PostSchema = mongoose.Schema({
     },
 
     postedBy:{
-        
-    }
-})
-
-var TagSchema = mongoose.Schema({
-    tagName:{
-        type:String,
-        required:true
+        type:Object
     }
 })
 
 var User = mongoose.model("user", UserSchema)
 var Post = mongoose.model("post", PostSchema)
-var Tag = mongoose.model("tag", TagSchema)
 
 module.exports = {
     User,
-    Post,
-    Tag
+    Post
 }
