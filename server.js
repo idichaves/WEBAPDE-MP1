@@ -6,9 +6,8 @@ const path = require("path");
 const sesssion = require("express-session");
 const cookieparser = require("cookie-parser");
 const hbs = require("hbs");
+const crypt = require("crypto-js");
 //const {User} = require(".model/");
-
-
 
 /****SETUP***********************/
 const app = express();
@@ -24,9 +23,7 @@ app.set("view-engine", "hbs")
 var users = []
 
 app.use(express.static(__dirname + "/public"))
-app.use(express.static("root/../views/"))
-app.use(express.static("root/../images/"))
-app.use(express.static("root/../bootstrap-4.1.1-dist/"))
+
 //for cookie
 // app.use(session({
 //     secret: ""
@@ -49,7 +46,7 @@ app.post("/login", urlencoder, (req, res) => {
     //search into database
     //if exists, move to home page
     //else show user does not exist
-    
+    res.render("usermaincopy.hbs")
 });
 
 app.post("/register", urlencoder, (req, res) => {
@@ -62,6 +59,7 @@ app.post("/register", urlencoder, (req, res) => {
 
     //add into database
     //if success, else
+    res.render("login.hbs")
 });
 
 // app.post("/post", urlencoder, (req, res) => {
@@ -107,6 +105,12 @@ app.get("/profile",(req, res) => {
     res.render("profile.hbs")
 });
 
+app.get("/offlineprofile", (req, res) => {
+    console.log("GET /offlineprofile")
+
+    res.sendFile(path.join(__dirname, "offlineprofile.html"))
+})
+
 app.get("/usermaincopy", (req, res) => {
     console.log("GET /usermaincopy")
     
@@ -120,10 +124,35 @@ app.get("/logout", (req, res) => {
 });
 
 app.use("*", (req, res) => {
-    res.status(404).send("There is no such path")
+    res.status(404).send("There is no such page")
     //add new html file for Error 404 page.
 });
+
+function findUser(){
+
+}
+
+function findAllUsers(){
+
+}
+
+function findPost(){
+
+}
+
+function findAllPosts(){
+
+}
+
+function deletePost(){
+
+}
+
+function addPost(){
+
+}
 
 app.listen(port, () => {
     console.log("Listening in port " + port);
 });
+
