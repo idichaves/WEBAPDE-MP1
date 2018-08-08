@@ -281,10 +281,11 @@ form#search{
 }
 
 .login-container  {
+    margin-top: 56px;
   padding: 25px;
   border-radius: 5px;
   background-color: #fefefe;
-  width: 33%;
+  width: 26%;
   box-shadow: -1px 1px 10px rgba(0,0,0,.65);
 }
 
@@ -292,7 +293,7 @@ form#search{
   padding: 25px;
   border-radius: 5px;
   background-color: #fefefe;
-  width: 33%;
+  width: 26%;
   box-shadow: -1px 1px 10px rgba(0,0,0,.65);
 }
 
