@@ -24,13 +24,13 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
                 </form>
                 
-                <ul class="navbar-nav mr-auto" id="forms">
                     <li class="nav-item active" id="login">
                         <a class="nav-link" href="login" id="loginbtn">Login</a>
                     </li>
                     <li class="nav-item active" id="register">
                         <a class="nav-link" href="register" id="registerbtn">Register</a>
                     </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -117,7 +117,9 @@
                 </div>
                 </div>
             </div>
-        
+        <div class="alert alert-success" role="alert">
+            This is a success alert—check it out!
+        </div>
         <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -128,81 +130,19 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <img src="images/spongebob.png" class="img-preview">
+                                <img src="spongebob.png" class="img-preview">
                             </div>
                             
                         </div>
                 </div>
         </div>
     </body>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(()=>{
-            $("#search").submit((e)=>{
-                e.preventDefault();
-               
-                var input = document.getElementById('searchBox');
-                var filter = input.value.toUpperCase();
-                    
-                /*Insert redirect*/
-                displayPost();
-                alert(input.value);
-            });
-				
-			function displayPost() {
-                var divRowMeme = document.createElement("div");
-                var divTitleRow = document.createElement("div");
-                var divTagRow = document.createElement("div");
-                var divImageRow = document.createElement("div");
-                var divImageContainer = document.createElement("div");
-            
-                var paragraph = document.createElement("p");
-                var title = document.createElement("strong");
-                var user = document.createElement("span");
-                var tag = document.createElement("a");
-                var image = document.createElement("img");
-                var bar = document.createElement("hr");
-                    
-                $(image).attr('src', "images/spongebob.png");
-                $(image).attr('alt', "");
-                $(image).addClass("img");
-                
-                $(tag).addClass("btn meme-hashtag");
-                $(tag).attr('id', "searchTag");
-                $(tag).text("AnotherTag");
-                    
-                $(user).addClass("username");
-                $(user).text("@anotherPerson");
-                    
-                $(title).addClass("meme-title");
-                $(title).text("Meme#2");
-                    
-                $(divRowMeme).addClass("row meme");
-                $(divTitleRow).addClass("row");
-                $(paragraph).addClass("meme-header");
-                $(divTagRow).addClass("row hashtag");
-                $(divImageRow).addClass("row");
-                $(divImageContainer).addClass("col img-container");
-                
-                $(paragraph).append(title);
-                $(paragraph).append(user);
-                $(divTitleRow).append(paragraph);
-                    
-                $(divTagRow).append(tag);
-                    
-                $(divImageContainer).append(image);
-                $(divImageRow).append(divImageContainer);
-                    
-                $(divRowMeme).append(divTitleRow);
-                $(divRowMeme).append(divTagRow);
-                $(divRowMeme).append(divImageRow);
-                
-                $("#content").append(divRowMeme);
-	            $("#content").append(bar);
-				console.log(tag.text);
-            };
-        });
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="login.js"></script>
+     <script>
 			
         </script>
 </html>

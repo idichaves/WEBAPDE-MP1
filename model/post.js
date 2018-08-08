@@ -23,7 +23,7 @@ var PostSchema = mongoose.Schema({
     },
 
     postedBy:{
-        type:Object
+        type:Object //ObjectId
     },
     
     datePosted:{

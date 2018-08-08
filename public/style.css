@@ -23,7 +23,7 @@ body, html{
   /* background-color: #fefefe; */
   border-radius: 5px;
   /* box-shadow: 0 0 5px rgba(0,0,0, .6); */
-  margin-top:5%;
+  margin-top: 40px;
   justify-content: center;
   margin-bottom: 20px;
 }
@@ -48,11 +48,6 @@ body, html{
   background-color: #FEFEFE;
 }
 
-.view {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, .6);
-}
 
 .img-preview{
   max-width: 100%;
@@ -67,7 +62,6 @@ body, html{
 .content {
   display: flex;
   flex-direction: column;
-  background-color: #FEFEFE;
   
 }
 
@@ -208,9 +202,7 @@ form#search{
 }
 
 .publish, .content {
-  background-color: #FEFEFE;
   
-  border-radius: 10px;
   justify-content: center;
 }
 
@@ -279,8 +271,29 @@ form#search{
 .content-item-container {
   /* border-bottom-width: 2px;
   border-bottom-style: solid; */
-  padding-bottom: 20px;
+  /* padding-bottom: 20px;
+  margin-bottom: 20px; */
+  border-radius: 5px;
+  box-shadow: -1px 1px 10px black;
+  padding: 25px;
   margin-bottom: 20px;
+  background-color: #fefefe;
+}
+
+.login-container  {
+  padding: 25px;
+  border-radius: 5px;
+  background-color: #fefefe;
+  width: 33%;
+  box-shadow: -1px 1px 10px rgba(0,0,0,.65);
+}
+
+.register-container  {
+  padding: 25px;
+  border-radius: 5px;
+  background-color: #fefefe;
+  width: 33%;
+  box-shadow: -1px 1px 10px rgba(0,0,0,.65);
 }
 
 .hashtag{
@@ -343,9 +356,13 @@ form#search{
     height: 3.5rem; }
 
 #login-form{
-    margin-top: 10px;;
+    margin-top: 10px;
+    
 }
-
+#register-form{
+  margin-top: 10px;
+  
+}
 #user-login{
     margin-top: 30px;
     display:flex;
@@ -367,9 +384,6 @@ form#search{
     border-radius:5px;
     font-size:20px;
     text-decoration: none;
-    color: black;
-    background-color:darkgray;
-
 }
 
 .prompt{
@@ -396,4 +410,30 @@ form#search{
 
 #signup{
   margin-top: 5%;
+}
+
+.sample{
+  width: 100%;
+  text-align: right;
+   
+
+}
+
+
+.sampletxt{
+  
+  font-size: 14;
+  color: #999999;
+  line-height: 1.5;
+}
+
+.bo1{
+  border-bottom: 1px solid #999999;
+}
+.login-header {
+  text-align: center;
+}
+
+.register-header {
+  text-align: center;
 }

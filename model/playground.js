@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const {User} = require("./user.js")
 const {Post} = require("./post.js")
+const {Tag} = require("./tag.js")
 
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/memeify", {
@@ -29,7 +30,7 @@ module.exports = {
         User.find().then((users) => {
             console.log("Retrieved users: " + users)
 
-            return true
+            return users
         }, (err) => {
             console.log("retrieveUsers "  + err)
 
@@ -43,7 +44,7 @@ module.exports = {
         }).then((result) => {
             console.log("Retrieved user: " + result.username)
 
-            return true
+            return result
         }, (err) => {
             console.log("retrieveUser " + err)
 
@@ -57,7 +58,7 @@ module.exports = {
         }).then((result) => {
             console.log("Retrieved user: " + result.username)
 
-            return true
+            return result
         }, (err) => {
             console.log("retrieveUserWithUsername " + err)
 
@@ -65,65 +66,99 @@ module.exports = {
         })
     },
 
-    updateUserDesc:function (id, newDesc){
-        User.findOneAndUpdate({
-            _id: id
+    updateUserPost: function(userid, postid, tags, public, sharedwith){
+        this.updatePost(postid, tags, public, sharedwith)
+        var posts = this.retrieveUserPosts(userid)
+        
+        for (var i = 0; i < posts.length; i++){
+            if (posts[i]._id === postid){
+                posts[i].tags = tags
+                posts[i].public = public
+                posts[i].sharedwith = sharedwith
+                break;
+            }
+        }
+
+        User.findOne({
+            _id: userid
         }, {
-            desc: newDesc
-        }).then((result) => {
-            console.log("Updated a user")
+           posts 
+        }).then((msg)=>{
+            console.log(msg)
 
             return true
         }, (err) => {
-            console.log("updateUserDesc " + err)
+            console.log(err)
 
             return false
         })
     },
 
-    updateUserDescWithUsername: function(username, newDesc){
-        User.findOneAndUpdate({
-            username
+    deleteUserPost: function(userid, postid){
+        this.deletePost(postid)
+        var posts = this.retrieveUserPosts(userid)
+        
+        for (var i = 0; i < posts.length; i++){
+            if (posts[i]._id === postid){
+                posts.splice(0, i)
+                break;
+            }
+        }
+
+        User.findOne({
+            _id: userid
         }, {
-            desc: newDesc
-        }).then((result) => {
-            console.log("Updated a user")
+           posts 
+        }).then((msg)=>{
+            console.log(msg)
 
             return true
         }, (err) => {
-            console.log("updateUserDescWithUsername " + err)
+            console.log(err)
 
-            return false;
+            return false
         })
     },
 
-    addPost: function (title, tags, public, sharedwith, postedBy){
+    addPost: function (title, tags, img, public, sharedwith, postedBy){
         var post = new Post({
-            title, tags, public, sharedwith, postedBy
+            title, tags, img, public, sharedwith, postedBy
         })
 
         post.save().then((newPost) => {
             console.log("Successfully added post " + newPost)
+
+            return newPost
         }, (err) => {
             console.log("addPost " + err)
+
+            return false
         })
     },
 
     retrievePosts: function (){
         Post.find().then((posts) => {
             console.log("Retrieved posts")
+
+            return posts
         }, (err) => {
             console.log("retrievePosts " + err)
+
+            return false
         })
     },
 
-    retrievePostsWithUserID: function(id){
+    retrieveUserPosts: function(userid){
         Post.find({
-            postedBy: id
+            postedBy: userid
         }).then((posts) => {
             console.log("Successfully retrieved posts")
+
+            return posts
         }, (err) => {
-            console.log("retrievePostsWithUserID" + err)
+            console.log("retrieveUserPosts" + err)
+
+            return false
         })
     },
 
@@ -132,20 +167,34 @@ module.exports = {
             _id: id
         }).then((post) => {
             console.log("Retrieved post" + post.title)
+
+            return post
         }, (err) => {
             console.log(err)
+
+            return false
         })
     },
 
-    updatePost: function(id, tags){
+    retrievePostWithTag: function(tag){
+        Post.find()
+    },
+
+    updatePost: function(id, tags, public, sharedwith){
         Post.findOneAndUpdate({
             _id: id
         }, {
-            tags
+            tags,
+            public,
+            sharedwith
         }).then((result) => {
             console.log("Post successfully updated")
+
+            return result
         }, (err) => {
             console.log(err)
+
+            return false
         })
     },
 
@@ -154,8 +203,12 @@ module.exports = {
             _id: id
         }).then((result) => {
             console.log("Successfully deleted a post")
+            
+            return true
         }, (err) => {
             console.log(err)
+
+            return false
         })
     }
 };

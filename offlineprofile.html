@@ -33,10 +33,10 @@
                 
                 <ul class="navbar-nav mr-auto" id="forms">
                     <li class="nav-item active" id="login">
-                        <a class="nav-link" href="login" id="loginbtn">Login</a>
+                        <a class="nav-link" href="login">Login</a>
                     </li>
                     <li class="nav-item active" id="logout">
-                        <a class="nav-link" href="register" id="registerbtn">Register</a>
+                        <a class="nav-link" href="logout" id="logoutbtn">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -44,10 +44,10 @@
         
         <div class="container-fluid main-container">
             <div class="row justify-content-center">
-                <div class="col-md-8 profile-content">
+                <div class="col-md-8 profile-content" style="margin-top: 2%;">
                     <div class='row'>                    
-                        <div class="col-sm-2 pic">
-                            <img src="images/user.png" id="userpic">
+                        <div class="col-sm-2 pic" style="bottom: 10%;">
+                            <img src="user.png" id="userpic">
                         </div>
 
                         <div class="col-sm-10 details">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 
-                <div class="container-fluid main-container">
+                <div class="container-fluid main-container" style="margin-top:6%;">
                     <div class="row create-row meme-container">
                         <div class="col-md-10 create-content-container row">
                             <div class="col-md-7 content view">
@@ -78,7 +78,7 @@
                             
                                     <div class="row">
                                         <div class="col content-img-container">
-                                            <img src="images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                            <img src="spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@
                                 
                                     <div class="row">
                                      <div class="col content-img-container">
-                                            <img src="images/tenor.png" class="content-img" alt="">
+                                            <img src="tenor.png" class="content-img" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@
                     
                 /*Insert redirect*/
                 displayPost();
-				alert(input.value);
+                location.href = "search";
             });
 				
 			function displayPost() {
