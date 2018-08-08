@@ -120,13 +120,15 @@ module.exports = {
     },
 
     addPost: function (title, tags, img, public, sharedwith, postedBy){
-        var post = new Post({
-            title, tags, img, public, sharedwith, postedBy
-        })
+        var obTags = []
 
         tags.forEach(element => {
-            this.addTag(tags[i])
+            obTags.push(this.addTag(element))
         });
+
+        var post = new Post({
+            title, obTags, img, public, sharedwith, postedBy
+        })
 
         post.save().then((newPost) => {
             console.log("Successfully added post " + newPost)
@@ -213,7 +215,7 @@ module.exports = {
 
             return tag
         }, (err) => {
-            console.log(err)
+            console.log("searchByTag" + err)
 
             return false
         })
@@ -254,7 +256,7 @@ module.exports = {
 
             return result
         }, (err) => {
-            console.log(err)
+            console.log("updatePost" + err)
 
             return false
         })
@@ -268,7 +270,7 @@ module.exports = {
             
             return true
         }, (err) => {
-            console.log(err)
+            console.log("deletePost" + err)
 
             return false
         })
