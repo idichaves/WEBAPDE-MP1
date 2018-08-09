@@ -1,9 +1,9 @@
-$('#login-button').click((e)=>{
-   e.preventDefault();
+// $('#login-button').click((e)=>{
+//    e.preventDefault();
     
-   console.log("Hello");
-   location.href = "usermaincopy";
-});
+//    console.log("Hello");
+//    location.href = "usermaincopy";
+// });
 
 $('#searchbtn').click((e)=>{
 

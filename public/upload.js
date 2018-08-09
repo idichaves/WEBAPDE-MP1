@@ -54,11 +54,11 @@ $(document).ready( function() {
         $('.modal-title').html(parent[0].children[0].children[0].childNodes[0].data)
         $('.img-preview').attr('src', $(this).attr('src'))
     })
-    $("#post").on('click',function(e){
-        e.preventDefault()
-        alert("Successfully Uploaded")
-        location.reload(true)
-    })
+    // $("#post").on('click',function(e){
+    //     e.preventDefault()
+    //     alert("Successfully Uploaded")
+    //     location.reload(true)
+    // })
 })
 
 var getQueryString = function(field, url) {

@@ -69,7 +69,7 @@ app.post("/register", urlencoder, (req, res) => {
     //add into database
     
     //if success, res.render("login.hbs") else res.render("register.hbs")
-    res.render("login.hbs")
+    res.sendFile(path.join(__dirname, "login.html"))
 });
 
 app.post("/edit", urlencoder, (req, res) => {
@@ -87,13 +87,19 @@ app.post("/upload", urlencoder, (req, res) => {
 })
 
 app.post("/share", urlencoder, (req, res) => {
-    console.log("POST /edit")
+    console.log("POST /share")
 
     res.render("usermaincopy.hbs")
 })
 
 app.post("/delete", urlencoder, (req, res) => {
     console.log("POST /delete")
+
+    res.render("profile.hbs")
+})
+
+app.post("/profileupload", urlencoder, (req, res) => {
+    console.log("POST /profileupload")
 
     res.render("profile.hbs")
 })
@@ -119,8 +125,8 @@ app.get("/index", (req, res) => {
     res.redirect("/")
 })
 
-app.get("/login", (req, res) => {
-    console.log("GET /login")
+app.get("/loginpage", (req, res) => {
+    console.log("GET /loginpage")
 
     res.sendFile(path.join(__dirname, "login.html"))
 });
