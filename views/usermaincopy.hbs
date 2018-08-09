@@ -23,8 +23,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="mainNav">
-                <form class="form-inline my-2 my-lg-0" id="search">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Enter tag/s" aria-label="Search" id="searchBox">
+                <form class="form-inline my-2 my-lg-0" id="search" method="GET" action="search">
+                    <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Enter tag/s" aria-label="Search" id="searchBox">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Search</button>
                 </form>
 
@@ -135,7 +135,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name-input">Meme Name: </label>
-                                <input type="text" class="form-control name-input" id="name-input" placeholder="Enter Meme Name">  
+                                <input type="text" name="title" class="form-control name-input" id="name-input" placeholder="Enter Meme Name">  
                             </div>
                             <div class="form-group">
                                 <label for="tag-input">Add Tag</label>

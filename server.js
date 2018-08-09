@@ -64,7 +64,7 @@ app.post("/register", urlencoder, (req, res) => {
     var password = req.body.password;
     var desc = req.body.desc;
 
-    var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
+    // var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
 
     //add into database
     
@@ -72,32 +72,38 @@ app.post("/register", urlencoder, (req, res) => {
     res.render("login.hbs")
 });
 
+app.post("/edit", urlencoder, (req, res) => {
+    console.log("POST /edit")
+
+    res.render("profile.hbs")
+})
+
 app.post("/upload", urlencoder, (req, res) => {
     console.log("POST /upload")
 
     var title = req.body.title
 
-    //res.render("usermaincopy.hbs")
+    res.render("usermaincopy.hbs")
 })
 
-app.post("/edit", urlencoder, (req, res) => {
+app.post("/share", urlencoder, (req, res) => {
     console.log("POST /edit")
 
-    //res..render
+    res.render("usermaincopy.hbs")
 })
 
-// app.post("/delete", urlencoder, (req, res) => {
-//     console.log("POST /delete")
+app.post("/delete", urlencoder, (req, res) => {
+    console.log("POST /delete")
 
-//     res.render("")
-// })
+    res.render("profile.hbs")
+})
 
 app.get("/search", urlencoder, (req, res) => {
     console.log("GET /search")
 
     var search = req.query.searchString
 
-    res.render("index.hbs")
+    res.render("search.hbs")
 })
 
 app.get("/", (req, res) => {
