@@ -10,11 +10,7 @@ mongoose.connect("mongodb://localhost:27017/memeify", {
 });
 
 module.exports = {
-    addUser: function(username, password, desc){
-        var user = new User({
-            username, password, desc
-        })
-
+    addUser: function(user){
         user.save().then((newUser) => {
             console.log("Successfully added user " + newUser)
 
@@ -120,19 +116,7 @@ module.exports = {
         })
     },
 
-    addPost: function (title, tags, img, public, sharedwith, postedBy){
-        var obTags = []
-
-        for (let i = 0; i < tags.length; i++){
-            var obj = this.addTag(tags[i])
-            if (obj)
-                obTags.push(obj)
-        }
-
-        var post = new Post({
-            title, tags, img, public, sharedwith, postedBy
-        })
-
+    addPost: function (post){
         post.save().then((newPost) => {
             console.log("Successfully added post " + newPost)
 

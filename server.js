@@ -7,6 +7,9 @@ const session = require("express-session");
 const cookieparser = require("cookie-parser");
 const hbs = require("hbs");
 const crypto = require("crypto");
+const {User} = require("./model/user.js")
+const {Post} = require("./model/post.js")
+const {Tag} = require("./model/tag.js")
 const {ops} = require("./model/playground.js")
 //const {User} = require(".model/");
 
@@ -63,10 +66,12 @@ app.post("/register", urlencoder, (req, res) => {
     var username = req.body.username;
     var password = req.body.password;
     var desc = req.body.desc;
+    var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
 
-    // var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
-
-    //add into database
+    var user = new User({
+        username, hashedpassword, desc
+    })
+    //ops.addUser()
     
     //if success, res.render("login.hbs") else res.render("register.hbs")
     res.sendFile(path.join(__dirname, "login.html"))
@@ -83,11 +88,21 @@ app.post("/upload", urlencoder, (req, res) => {
 
     var title = req.body.title
 
+    var post = new Post({
+        title
+    })
+
+    //addPost(post)
+
     res.render("usermaincopy.hbs")
 })
 
 app.post("/share", urlencoder, (req, res) => {
     console.log("POST /share")
+
+    var username = req.body.username
+
+
 
     res.render("usermaincopy.hbs")
 })
@@ -101,6 +116,11 @@ app.post("/delete", urlencoder, (req, res) => {
 app.post("/profileupload", urlencoder, (req, res) => {
     console.log("POST /profileupload")
 
+    var title = req.body.title
+
+    var post = new Post({
+        title
+    })
     res.render("profile.hbs")
 })
 
@@ -116,7 +136,7 @@ app.get("/", (req, res) => {
     console.log("GET /")
     //var username = req.session.username
 
-    res.sendFile(path.join(__dirname, "index.html"))
+    res.render("index.hbs")
 });
 
 app.get("/index", (req, res) => {
@@ -146,7 +166,7 @@ app.get("/profile", (req, res) => {
 app.get("/offlineprofile", (req, res) => {
     console.log("GET /offlineprofile")
 
-    res.sendFile(path.join(__dirname, "offlineprofile.html"))
+    res.render("offlineprofile.hbs")
 })
 
 app.get("/usermaincopy", (req, res) => {
