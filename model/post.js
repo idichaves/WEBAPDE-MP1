@@ -7,7 +7,7 @@ var PostSchema = mongoose.Schema({
     },
 
     tags:{
-        type:Array
+        type:[String]
     },
 
     img:{
@@ -19,7 +19,7 @@ var PostSchema = mongoose.Schema({
     },
 
     sharedwith:{
-        type:Array
+        type:[String]
     },
 
     postedBy:{
