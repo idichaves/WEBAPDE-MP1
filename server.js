@@ -71,10 +71,19 @@ app.post("/register", urlencoder, (req, res) => {
     var user = new User({
         username, hashedpassword, desc
     })
-    //ops.addUser()
+
+    // var existingUser = ops.retrieveUserWithUsername(username)
+    // //if no result, meaning username is unique
+    // if (!existingUser){
+    //     ops.addUser(user)
+    //     res.render("login.hbs")
+    // }else{
+    //     res.redirect("/register")
+    // }
     
+    res.render("login.hbs")
     //if success, res.render("login.hbs") else res.render("register.hbs")
-    res.sendFile(path.join(__dirname, "login.html"))
+    
 });
 
 app.post("/edit", urlencoder, (req, res) => {
@@ -101,8 +110,6 @@ app.post("/share", urlencoder, (req, res) => {
     console.log("POST /share")
 
     var username = req.body.username
-
-
 
     res.render("usermaincopy.hbs")
 })
