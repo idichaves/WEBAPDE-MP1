@@ -70,7 +70,7 @@ module.exports = {
         this.updatePost(postid, public, sharedwith)
         var posts = this.retrieveUserPosts(userid)
         
-        for (var i = 0; i < posts.length; i++){
+        for (let i = 0; i < posts.length; i++){
             if (posts[i]._id === postid){
                 posts[i].public = public
                 posts[i].sharedwith = sharedwith
@@ -97,7 +97,7 @@ module.exports = {
         this.deletePost(postid)
         var posts = this.retrieveUserPosts(userid)
         
-        for (var i = 0; i < posts.length; i++){
+        for (let i = 0; i < posts.length; i++){
             if (posts[i]._id === postid){
                 posts.splice(0, i)
                 break;
@@ -120,8 +120,16 @@ module.exports = {
     },
 
     addPost: function (title, tags, img, public, sharedwith, postedBy){
+        var obTags = []
+
+        for (let i = 0; i < tags.length; i++){
+            var obj = this.addTag(tags[i])
+            if (obj)
+                obTags.push(obj)
+        }
+
         var post = new Post({
-            title, tags, img, public, sharedwith, postedBy
+            title, ags, img, public, sharedwith, postedBy
         })
 
         post.save().then((newPost) => {
@@ -175,22 +183,68 @@ module.exports = {
         })
     },
 
-    addTag: function(){
+    addTag: function(name){
+        let tag = {
+            tagName: name
+        }
 
+        tag.save().then((result) => {
+            console.log("Successfully added tag")
+        }, (err) =>{
+            console.log("addTag " + err)
+
+            return 
+        })
     },
 
     retrieveAllTags: function(){
+        Tag.find().then((tags) => {
+            console.log("Found tags " + tags)
 
+            return tags
+        }, (err) => {
+            console.log(err)
+
+            return false
+        })
     },
 
     searchByTag: function(id){
+        Tag.findOne({
+            _id: id
+        }).then((tag) => {
+            console.log("Found tag")
 
+            return tag
+        }, (err) => {
+            console.log("searchByTag" + err)
+
+            return false
+        })
     },
 
     searchByTagString: function(tag){
         var posts = this.retrievePosts()
-        
 
+        if (posts){
+            for (let i = 0; i < posts.length; i++){
+                var noEqual = true
+                var j = 0
+                while (j < posts[i].tags.length && noEqual){
+                    if (posts[i].tags[j] === tag)
+                        noEqual = false
+                    j++;
+                }
+            
+                if (noEqual)
+                    posts.splice(0, i)
+            }
+
+            return posts
+        }
+        else{
+            return false
+        }
     },
 
     updatePost: function(id, public, sharedwith){
@@ -204,7 +258,7 @@ module.exports = {
 
             return result
         }, (err) => {
-            console.log(err)
+            console.log("updatePost" + err)
 
             return false
         })
@@ -218,7 +272,7 @@ module.exports = {
             
             return true
         }, (err) => {
-            console.log(err)
+            console.log("deletePost" + err)
 
             return false
         })
