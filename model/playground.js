@@ -66,12 +66,13 @@ module.exports = {
         })
     },
 
-    updateUserPost: function(userid, postid, public, sharedwith){
+    updateUserPost: function(userid, postid, tags, public, sharedwith){
         this.updatePost(postid, public, sharedwith)
         var posts = this.retrieveUserPosts(userid)
         
         for (let i = 0; i < posts.length; i++){
             if (posts[i]._id === postid){
+                posts[i].tags = tags
                 posts[i].public = public
                 posts[i].sharedwith = sharedwith
                 break;
@@ -129,7 +130,7 @@ module.exports = {
         }
 
         var post = new Post({
-            title, ags, img, public, sharedwith, postedBy
+            title, tags, img, public, sharedwith, postedBy
         })
 
         post.save().then((newPost) => {
@@ -247,10 +248,11 @@ module.exports = {
         }
     },
 
-    updatePost: function(id, public, sharedwith){
+    updatePost: function(id, tags, public, sharedwith){
         Post.findOneAndUpdate({
             _id: id
         }, {
+            tags,
             public,
             sharedwith
         }).then((result) => {
