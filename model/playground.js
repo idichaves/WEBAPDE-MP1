@@ -222,6 +222,8 @@ module.exports = {
             
                 if (noEqual)
                     posts.splice(0, i)
+                else
+                    posts = []
             }
 
             return posts
