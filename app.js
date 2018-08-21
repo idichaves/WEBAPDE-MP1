@@ -29,40 +29,6 @@ app.use("/", (req, res, next) => {
     next();
 });
 
-app.post("/login", urlencoder, (req, res) => {
-    console.log("POST /login")
-    
-    //get info
-    var username = req.body.username;
-    var password = req.body.password;
-    var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
-
-    //use retrieve operation from playground then unhash password
-
-    //cookie
-
-    //search into database
-    //if exists, move to home page
-    //else show user does not exist
-    res.render("usermaincopy.hbs")
-});
-
-app.post("/register", urlencoder, (req, res) => {
-    console.log("POST /register")
-
-    //get inputs
-    var username = req.body.username;
-    var password = req.body.password;
-    var desc = req.body.desc;
-    var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
-
-    var user = new User({
-        username, hashedpassword, desc
-    })
-    
-    res.render("login.hbs")
-});
-
 app.post("/edit", urlencoder, (req, res) => {
     console.log("POST /edit")
 
@@ -113,6 +79,7 @@ app.use("*", (req, res) => {
     //add new html file for Error 404 page.
 });
 
-app.listen(port, () => {
+
+app.listen(process.env.PORT || port, () => {
     console.log("Listening in port " + port);
 });

@@ -11,14 +11,16 @@ router.post("/login", urlencoder, (req, res) => {
     var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
 
     User.getUserWithUsername(username).then((user) => {
-        if (user){
+        if (user) {
             if (hashedpassword === user.password){
                 res.render("usermaincopy.hbs")
             } else {
-                res.send("Username/password does not match")
+                res.render("login.hbs", {
+                   msg: "Username/password incorrect!"
+                })
             }
-        } else{
-            res.send("User does not exist")
+        } else {
+            res.send("User does not exist.")
         }
     }, (error) => {
         res.send(error)
@@ -29,7 +31,7 @@ router.post("/login", urlencoder, (req, res) => {
 router.post("/register", urlencoder, (req, res) => {
     console.log("POST /user/register")
     var pass = req.body.password
-    var hashedpass =  crypto.createHash("md5").update(pass).digest("hex")
+    var hashedpass = crypto.createHash("md5").update(pass).digest("hex")
 
 	var user = {
         username: req.body.name,
@@ -37,30 +39,22 @@ router.post("/register", urlencoder, (req, res) => {
 		desc: req.body.desc
     }
 
-    // TODO: ask if this is correct.
     User.getUserWithUsername(user.username).then((user) => {
-        //check if there is a username like this, if none, call addUser
-        if (user){
-            res.send("Username already exists!")
+        if (user) {
+            res.render("register.hbs", {
+                msg: "Username is already taken!"
+            })
         }
-        else{
+        else {
             User.addUser(user).then((newUser) => {
                 res.render("login.hbs")
             }, (error) => {
-                res.send(error)
+                res.send("Something went wrong, please try again.")
             })
         }
-        res.render("login.hbs")
     }, (error) => {
-        res.send(error)
+        res.send("Something went wrong, try again.")
     })
-
-    
-	// Food.create(f).then(()=>{
-	// 	res.render("index")
-	// }, ()=>{
-	// 	res.render("error")
-	// })
 })
 
 // router.get("/:fid", (req, res) => {

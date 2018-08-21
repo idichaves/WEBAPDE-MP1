@@ -1,17 +1,23 @@
 const mongoose = require("mongoose")
+const multer = require("multer")
+const Schema = mongoose.Schema
 
-var PostSchema = mongoose.Schema({
+var PostSchema = new Schema({
     title:{
         type:String,
         required:true
     },
 
-    tags:{
-        type:[String]
+    filename:{
+        type:String
     },
 
-    img:{
-        type:Buffer
+    origfilename:{
+        type:String
+    },
+
+    tags:{
+        type:[String]
     },
 
     public:{
@@ -30,6 +36,8 @@ var PostSchema = mongoose.Schema({
         type:Date,
         default: Date.now
     }
+}, {
+    timestamps:true
 })
 
 var Post = mongoose.model("post", PostSchema)
@@ -79,15 +87,47 @@ module.exports.getUserPosts = function(userid){
     })
 }
 
+
+module.exports.getPostsWithTag = function(tagName){
+    return new Promise(function(resolve, reject){
+        
+    })
+}
+
 //THIS NEEDS CONNECTION WITH USER SCHEMA
-module.exports.updatePost = function(id){
-
+//CALL THE CONNECTION WITH USER SCHEMA IN CONTROLLERS
+module.exports.updatePost = function(id, title, tags){
+    return new Promise(function(resolve, reject){
+        //How to implement the update user post?
+        Post.findOneAndUpdate({
+            _id: id
+        }, {
+            title,
+            tags
+        }).then((editedPost) =>{
+            resolve(editedPost)
+        }, (error) => {
+            reject(error)
+        })
+    })
 }
 
-module.exports.sharePost = function(id, shareduser){
-    
+//THIS NEEDS CONNECTION WITH USER SCHEMA
+module.exports.sharePost = function(id, newSharedwith){
+    return new Promise(function(resolve, reject){
+        Post.findOneAndUpdate({
+            _id: id
+        }, {
+            sharedwith: newSharedwith
+        }).then((sharedPost) => {
+            resolve(sharedPost)
+        }, (error) => {
+            reject(error)
+        })
+    })
 }
 
+//THIS NEEDS CONNECTION WITH USER SCHEMA
 module.exports.deletePost = function(postid){
     return new Promise(function(resolve, reject){
         Post.remove({

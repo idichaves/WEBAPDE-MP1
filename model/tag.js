@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
-var TagSchema = mongoose.Schema({
+var TagSchema = new Schema({
     tagName:{
         type:String,
         required:true
@@ -15,6 +16,7 @@ var Tag = mongoose.model("tag", TagSchema)
 module.exports.addTag = function(tag){
     return new Promise(function(resolve, reject){
         var t = new Tag(tag)
+
         t.save().then((newTag) => {
             resolve(newTag)
         }, (error) => {
