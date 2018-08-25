@@ -79,8 +79,16 @@ module.exports.updateUserPost = function (){
 }
 
 // THIS NEEDS CONNECTION WITH POST SCHEMA
-module.exports.deleteUserPost = function(){
+module.exports.deleteUserPost = function(userid, posts){
     return new Promise(function(resolve, reject){
-         
+        User.findOneAndUpdate({
+            _id: userid
+        }, {
+            posts
+        }).then((user) => {
+            resolve(user)
+        }, (error) => {
+            reject(error)
+        })
     })
 }

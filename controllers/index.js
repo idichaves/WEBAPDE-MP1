@@ -1,19 +1,20 @@
 const express = require("express")
 const path = require("path")
+const app = express()
 const router = express.Router()
+const Post = require("../model/post")
 
-router.use("/user", require("user"))
-router.use("/post", require("post"))
-router.use("/tag", require("tag"))
-router.use("/", (req, res, next) => {
-    console.log("USE /")
-    next();
-})
+router.use("/post", require("./post"))
+router.use("/user", require("./user"))
+router.use("/tag", require("./tag"))
 
 router.get("/", (req, res) => {
     console.log("GET /")
+    // Post.getAllPublicPosts().then((posts) => {
+    // res.render("index.hbs")
+    // })
 
-    res.render("index.hbs")
+   res.render("index.hbs")
 })
 
 router.get("/index", (req, res) => {
@@ -25,19 +26,13 @@ router.get("/index", (req, res) => {
 router.get("/loginpage", (req, res) => {
     console.log("GET /loginpage")
 
-    res.sendFile(path.join(__dirname, "login.html"))
+    res.render("login.hbs")
 });
 
 router.get("/register",(req, res) => {
     console.log("GET /register")
     
-    res.sendFile(path.join(__dirname, "register.html"))
-});
-
-router.get("/profile", (req, res) => {
-    console.log("GET /profile")
-    
-    res.render("profile.hbs")
+    res.render("register.hbs")
 });
 
 router.get("/offlineprofile", (req, res) => {
@@ -46,19 +41,7 @@ router.get("/offlineprofile", (req, res) => {
     res.render("offlineprofile.hbs")
 })
 
-router.get("/usermaincopy", (req, res) => {
-    console.log("GET /usermaincopy")
-    
-    res.render("usermaincopy.hbs")
-});
-
-router.get("/logout", (req, res) => {
-    console.log("GET /logout")
-    
-    res.sendFile(path.join(__dirname, "logout.html"))
-});
-
-router.get("/search", urlencoder, (req, res) => {
+router.get("/search", (req, res) => {
     console.log("GET /search")
 
     var search = req.query.searchString
@@ -71,4 +54,4 @@ router.use("*", (req, res) => {
     //add new html file for Error 404 page.
 });
 
-module.exports.router = router
+module.exports = router

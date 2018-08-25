@@ -1,0 +1,47 @@
+body{
+    background: #9053c7;
+    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    height:100vh;
+    
+}
+
+#sitename{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+p{
+    color: white;
+    font-family:'Ubuntu', sans-serif;
+    margin-left: 35%;
+}
+
+p.welcome{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size:40px;
+}
+
+p.prompt{
+    font-size:25px;
+}
+
+.form{
+    margin-left: 35%;
+    margin-bottom: 2%;
+    width:30%;
+    display:flex;
+}
+
+#desc{
+    height:90px;
+    text-align:left
+}
+
+#signup{
+    margin-left:45%;
+    width: 10%;
+}
+

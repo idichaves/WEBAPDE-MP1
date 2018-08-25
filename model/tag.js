@@ -39,7 +39,7 @@ module.exports.getTag = function(name){
     return new Promise(function(resolve, reject){
         Tag.findOne({
             tagName: name
-        }).then((tag) =>{
+        }).then((tag) => {
             resolve(tag)
         }, (error) => {
             reject(error)

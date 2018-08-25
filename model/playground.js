@@ -148,7 +148,7 @@ module.exports = {
         Post.findOneAndUpdate({
             _id: id
         }, {
-            sharedwith:sharedwith.append(sharedUser)
+            sharedwith:sharedwith.push(sharedUser)
         }).then((res) => {
             console.log(res)
 

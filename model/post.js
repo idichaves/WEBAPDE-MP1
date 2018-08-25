@@ -63,6 +63,18 @@ module.exports.getAllPosts = function(){
     })
 }
 
+module.exports.getAllPublicPosts = function(){
+    return new Promise(function(resolve, reject){
+        Post.find({
+            public: true
+        }).then((posts) => {
+            resolve(posts)
+        }, (error) => {
+            reject(error)
+        })
+    })
+}
+
 module.exports.getPost = function(id){
     return new Promise(function(resolve, reject){
         Post.findOne({
