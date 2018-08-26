@@ -53,6 +53,22 @@ router.get("/search", (req, res) => {
     res.render("search.hbs")
 })
 
+router.get("/offline/:username", (req, res) => {
+    console.log("GET /offline/" + req.params.username)
+
+    var username = req.params.username
+    Post.getAllPublicPostsOfUser(username).then((posts) => {
+        res.render("offlineprofile.hbs", {
+            username,
+            posts
+        })
+    }, (error) => {
+        console.log(error)
+
+        res.redirect("/")
+    })
+})
+
 router.use("*", (req, res) => {
     res.status(404).send("There is no such page")
     //add new html file for Error 404 page.

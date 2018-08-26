@@ -74,6 +74,18 @@ module.exports.getAllPublicPosts = function(){
     })
 }
 
+module.exports.getAllPublicPostsOfUser = function(username){
+    return new Promise(function(resolve, reject){
+        Post.find({
+            postedBy: username
+        }).then((posts) => {
+            resolve(posts)
+        }, (error) => {
+            reject(error)
+        })
+    })
+}
+
 module.exports.getPost = function(id){
     return new Promise(function(resolve, reject){
         Post.findOne({

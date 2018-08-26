@@ -58,7 +58,8 @@
                                 </div>
                             </div>
 
-                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="offlineprofile">@{{postedBy}}</a></div>
+                            {{!-- user/{{postedby}} --}}
+                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="offline/{{postedBy}}">@{{postedBy}}</a></div>
 
                             <div class="row content-tag">
                                 <div class="col">
@@ -77,37 +78,7 @@
             </div>
         </div>
         
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Upload Image</label>
-                            <div class="input-group">
-                                <span class="input-group-btn">
-                                    <span class="btn btn-default btn-file">
-                                        Browse... <input type="file" id="imgInp">
-                                    </span>
-                                </span>
-                                <input type="text" class="form-control" readonly>
-                            </div>
-                                    <img id='img-upload'/>
-                                </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+        {{!-- Preview Modal --}}
         <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -119,7 +90,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <img src="spongebob.png" class="img-preview">
+                        <img src="./../images/spongebob.png" class="img-preview">
                     </div>
                             
                 </div>

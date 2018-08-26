@@ -58,7 +58,7 @@ router.post("/upload", upload.single("postimg"), (req, res) => {
     }
 })
 
-router.post("/profileupload", urlencoder, (req, res) => {
+router.post("/profileupload", upload.single("postimg"), (req, res) => {
     console.log("POST /profileupload")
 
     var title = req.body.title
