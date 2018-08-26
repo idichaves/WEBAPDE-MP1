@@ -33,46 +33,6 @@ module.exports = {
         })
     },
 
-    deleteUserPost: function(userid, postid){
-        this.deletePost(postid)
-        var posts = this.retrieveUserPosts(userid)
-        
-        for (let i = 0; i < posts.length; i++){
-            if (posts[i]._id === postid){
-                posts.splice(0, i)
-                break;
-            }
-        }
-
-        User.findOne({
-            _id: userid
-        }, {
-           posts 
-        }).then((msg)=>{
-            console.log(msg)
-
-            return true
-        }, (err) => {
-            console.log(err)
-
-            return false
-        })
-    },
-
-    retrieveUserPosts: function(userid){
-        Post.find({
-            postedBy: userid
-        }).then((posts) => {
-            console.log("Successfully retrieved posts")
-
-            return posts
-        }, (err) => {
-            console.log("retrieveUserPosts" + err)
-
-            return false
-        })
-    },
-
     searchByTag: function(id){
         Tag.findOne({
             _id: id
@@ -125,20 +85,6 @@ module.exports = {
             return result
         }, (err) => {
             console.log("updatePost" + err)
-
-            return false
-        })
-    },
-
-    deletePost: function(id){
-        Post.remove({
-            _id: id
-        }).then((result) => {
-            console.log("Successfully deleted a post")
-            
-            return true
-        }, (err) => {
-            console.log("deletePost" + err)
 
             return false
         })

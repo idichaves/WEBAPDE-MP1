@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const multer = require("multer")
 const Schema = mongoose.Schema
 
 var PostSchema = new Schema({
@@ -29,11 +28,11 @@ var PostSchema = new Schema({
     },
 
     postedBy:{
-        type:Object //ObjectId
+        type:String //Object?
     },
     
     datePosted:{
-        type:Date,
+        type: Date,
         default: Date.now
     }
 }, {
@@ -99,7 +98,6 @@ module.exports.getUserPosts = function(userid){
     })
 }
 
-
 module.exports.getPostsWithTag = function(tagName){
     return new Promise(function(resolve, reject){
         
@@ -130,7 +128,7 @@ module.exports.sharePost = function(id, newSharedwith){
         Post.findOneAndUpdate({
             _id: id
         }, {
-            sharedwith: newSharedwith
+            "$push": {"sharedwith": newSharedwith}
         }).then((sharedPost) => {
             resolve(sharedPost)
         }, (error) => {
@@ -139,7 +137,7 @@ module.exports.sharePost = function(id, newSharedwith){
     })
 }
 
-//THIS NEEDS CONNECTION WITH USER SCHEMA
+//THIS NEEDS CONNECTION WITH USER SCHEMA IN USER SCHEMA
 module.exports.deletePost = function(postid){
     return new Promise(function(resolve, reject){
         Post.remove({

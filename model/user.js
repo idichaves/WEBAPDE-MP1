@@ -10,8 +10,7 @@ var UserSchema = new Schema({
 
     password:{
         type:String,
-        required:true,
-        minlength: 8
+        required:true
     },
 
     desc:{
@@ -20,7 +19,7 @@ var UserSchema = new Schema({
     },
 
     posts:{
-        type:Array
+        type:[Schema.Types.ObjectId] //Array?
     }
 })
 
@@ -71,20 +70,42 @@ module.exports.getUserWithUsername = function(uname){
     })
 }
 
-// THIS NEEDS CONNECTION WITH POST SCHEMA
-module.exports.updateUserPost = function (){
-    return new Promise(function(resolve, reject){
-
+module.exports.addPostToUser = function(id, post){
+    return new Promise (function(resolve, reject){
+        User.findOneAndUpdate({
+            username: id
+        },{
+            "$push": {"posts": post}
+        }).then((user) => {
+            resolve(user)
+        }, (error) => {
+            reject(error)
+        })
     })
 }
 
 // THIS NEEDS CONNECTION WITH POST SCHEMA
-module.exports.deleteUserPost = function(userid, posts){
+module.exports.updateUserPost = function (userid, posts){
     return new Promise(function(resolve, reject){
         User.findOneAndUpdate({
             _id: userid
         }, {
             posts
+        }).then((user) => {
+            resolve(user)
+        }, (error) => {
+            reject(error)
+        })
+    })
+}
+
+// THIS NEEDS CONNECTION WITH POST SCHEMA
+module.exports.deleteUserPost = function(userid, postid){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            _id: userid
+        }, {
+            "$pull": {"posts": postid}
         }).then((user) => {
             resolve(user)
         }, (error) => {

@@ -34,13 +34,9 @@ body, html{
     width: 100%;
 }
 
-.item-title {
-  color: black;
-  font-size: 1.5em;
-}
-
 .item-username {
   color: rgb(153, 153, 153);
+  padding-top: 10px;
 }
 
 .publish {
@@ -55,7 +51,9 @@ body, html{
 }
 
 .header{
-  display: flex;
+  color: black;
+  font-size: 1.5em;
+  display: inline-block;
   justify-content: space-between;
 }
 
@@ -72,17 +70,22 @@ body, html{
 .item-tag, .added-tag {
   text-decoration: none;
   color: rgb(var(--violet));
-  background-color: rgb(221, 221, 221);
+  /* background-color: rgb(221, 221, 221); */
   border-radius: 15px !important;
   transition: .3s ease;
 }
 
 .item-tag{
-  padding: 10px;
+  padding-left: 5px;
+  padding-right:5px;
 }
 
-.item-tag:hover {
-  box-shadow: 0 0 5px rgba(0,0,0,.4);
+/* .item-tag:hover {
+   box-shadow: 0 0 5px rgba(0,0,0,.4); 
+} */
+
+.item-title{
+  overflow: hidden;
 }
 
 .main-container{
@@ -288,7 +291,6 @@ form#search{
   /* padding-bottom: 20px;
   margin-bottom: 20px; */
   border-radius: 5px;
-  box-shadow: -1px 1px 10px black;
   padding: 25px;
   margin-bottom: 20px;
   background-color: #fefefe;
@@ -451,4 +453,12 @@ form#search{
 
 .register-header {
   text-align: center;
+}
+
+p{
+  margin-bottom:0px;
+}
+
+.modal-share{
+  padding-bottom: 10px;
 }

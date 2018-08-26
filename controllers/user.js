@@ -14,6 +14,7 @@ router.use(urlencoder)
 //localhost:3000/user/login
 router.post("/login", urlencoder, (req, res) => {
     console.log("POST /user/login")
+
     if (req.body.username !== "" && req.body.password !== ""){
         var username = req.body.username
         var password = req.body.password
@@ -22,11 +23,11 @@ router.post("/login", urlencoder, (req, res) => {
         User.getUserWithUsername(username).then((user) => {
             if (user) {
                 if (hashedpassword === user.password){
-                    res.render("usermaincopy.hbs")
-                } else {
-                    res.render("login.hbs", {
-                        msg: "Username/password incorrect!"
+                    res.render("usermaincopy.hbs", {
+                        user
                     })
+                } else {
+                    res.redirect("../loginpage")
                 }
             } else {
                 res.redirect("../register")
@@ -45,6 +46,7 @@ router.post("/login", urlencoder, (req, res) => {
 //localhost:3000/user/register
 router.post("/register", urlencoder, (req, res) => {
     console.log("POST /user/register")
+
     if (req.body.username !== "" && req.body.password !== "") {
         var pass = req.body.password
         var hashedpass = crypto.createHash("md5").update(pass).digest("hex")
@@ -58,7 +60,7 @@ router.post("/register", urlencoder, (req, res) => {
         User.getUserWithUsername(user.username).then((gotuser) => {
             if (gotuser) {
                 res.render("register.hbs", {
-                    msg: "Username is already taken!"
+                    msg: "Username is already taken!" //or error msg
                 })
             }
             else {
@@ -66,11 +68,13 @@ router.post("/register", urlencoder, (req, res) => {
                     res.render("login.hbs")
                 }, (error) => {
                     console.log(error)
+
                     res.send("Something went wrong, please try again.")
                 })
             }
         }, (error) => {
             console.log(error)
+
             res.send("Something went wrong, try again.")
         })
     } else {

@@ -14,14 +14,18 @@
     border-radius: 5px;
     color: white;
     transition: .3s;
-    box-shadow: -1px 1px 10px rgba(0,0,0,.30);
 }
 
 #upload-btn:hover {
-    box-shadow: -3px 3px 10px rgba(0,0,0,.30);
+    /* box-shadow: -3px 3px 10px rgba(0,0,0,.30); */
     cursor: pointer;
 }
 
 .btn-info{
     height: 40px;
+}
+
+.submit-btn{
+    background: #9053c7;
+    color: white;
 }

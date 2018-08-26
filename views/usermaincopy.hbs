@@ -14,7 +14,6 @@
         <script type="text/javascript" src="./../js/bootstrap.min.js"></script>
     </head>
 
-    
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav_bar">
             <a class="navbar-brand" href="#" id="sitename">Memeify</a>
@@ -25,7 +24,7 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <form class="form-inline my-2 my-lg-0" id="search" method="GET" action="search">
                     <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Enter tag/s" aria-label="Search" id="searchBox">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Search</button>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
                 </form>
 
                 <ul class="navbar-nav mr-auto" id="forms">
@@ -57,8 +56,9 @@
                     <div class="col-md-1">
                         
                     </div>
+
                     <div class="col-md-7 content view">
-                  
+                        {{!-- {{#each posts}} --}}
                         <div class="content-item-container border-bottom">
                             <div class="row content-item">
                                 <div class="col header">
@@ -76,6 +76,7 @@
                             
                             <div class="row">
                                 <div class="col content-img-container">
+                                    {{!-- change src to "./../post/photo/{{id}}" --}}
                                     <img src="./../images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
                                 </div>
                             </div>
@@ -185,19 +186,18 @@
 
                     <!--Modal Body-->
                     <div class="modal-body">
-                        <form method="POST" action="/post/upload">
+                        <form method="POST" action="../post/upload" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Upload Image</label>
                                 <div class="input-group">
                                     <span class="input-group-btn">
                                         <span class="btn btn-primary btn-file">
-                                            Browse... <input type="file" id="imgInp">
+                                            Browse... <input type="file" id="imgInp" name="postimg">
                                         </span>
                                     </span>
                                     <input type="text" class="form-control" readonly>
                                 </div>
                                 <img id='img-upload'/>
-
                             </div>
                             
                             <div class="form-group">
@@ -220,6 +220,8 @@
                                 <button type="button" class="btn btn-outline-secondary">Private</button>
                             </div>
 
+                            <input type="hidden" name="userid" value={{user.username}}>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-default" id="post">Submit</button>
@@ -234,9 +236,9 @@
             </div>
             
             <!-- The Modal -->
-                    <div class="modal" id="Share">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+            <div class="modal" id="Share">
+                <div class="modal-dialog">
+                    <div class="modal-content">
 
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -245,7 +247,7 @@
                         </div>
 
                         <!-- Modal body -->
-                        <form method="POST" action="share">
+                        <form method="POST" action="/post/share">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="name-input">Share To: </label>

@@ -2,6 +2,7 @@ const express = require("express")
 const path = require("path")
 const app = express()
 const router = express.Router()
+const User = require("../model/user")
 const Post = require("../model/post")
 
 router.use("/post", require("./post"))
@@ -10,11 +11,14 @@ router.use("/tag", require("./tag"))
 
 router.get("/", (req, res) => {
     console.log("GET /")
-    // Post.getAllPublicPosts().then((posts) => {
-    // res.render("index.hbs")
-    // })
 
-   res.render("index.hbs")
+    Post.getAllPublicPosts().then((posts) => {
+        res.render("index.hbs", {
+            posts
+        })
+    })
+
+    // res.render("index.hbs")
 })
 
 router.get("/index", (req, res) => {
@@ -27,13 +31,13 @@ router.get("/loginpage", (req, res) => {
     console.log("GET /loginpage")
 
     res.render("login.hbs")
-});
+})
 
 router.get("/register",(req, res) => {
     console.log("GET /register")
     
     res.render("register.hbs")
-});
+})
 
 router.get("/offlineprofile", (req, res) => {
     console.log("GET /offlineprofile")
