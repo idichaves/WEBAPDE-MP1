@@ -21,22 +21,17 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
-            </div>
         </nav>
         
         <div class="container-fluid main-container">
             <div class="create-content-container row">
                 <div class="content login-container row justify-content-center">
                    <form class="login-form" method="POST" action="../user/login">
-                        <h3 class="login-header" style="margin-bottom:30px;">Log In to Memeify</h3>
-                        
+                       <h3 class="login-header" style="margin-bottom:30px;">Log In to Memeify</h3>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
-                            </div>
+                            </div>    
                             <input type="text" name="username" class="form-control" id="inputEmail" placeholder="Username">   
                         </div>
 
@@ -53,7 +48,6 @@
                             </label>
                         </div>
 
-                        <!-- <input type="submit" class="btn btn-success btn-block" style="margin-top: 20px;" id="login-button" value="Login"> -->
                         <button type="submit" class="btn btn-success btn-block" style="margin-top: 20px;" id="login-button">Login</button>
                         <hr>
                         <div class="sample">
@@ -65,9 +59,9 @@
             </div>
         </div>
     </body>
-    <script src="login.js"></script>
-    <script>
-        {{!-- $(document).ready(()=>{
+    <script src="./../js/login.js"></script>
+    {{!-- <script>
+        $(document).ready(()=>{
             $("#search").submit((e)=>{
                 e.preventDefault();
                
@@ -131,7 +125,7 @@
 	            $("#content").append(bar);
 				console.log(tag.text);
             };
-        }); --}}
+        });
 			
-        </script>
+        </script> --}}
 </html>

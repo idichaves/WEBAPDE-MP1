@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="./../css/style.css" type="text/css">
         <link rel="stylesheet" href="./../css/user.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript" src="./../js/bootstrap.min.js"></script>
     </head>
@@ -43,128 +44,86 @@
 
                 <ul class="navbar-nav mr-auto" id="forms">
                     <li class="nav-item active" id="upload">
-                        <a class="nav-link" id="upload-btn"  data-toggle="modal" data-target="#Upload">Upload</a>
+                        <a class="nav-link btn btn-md" id="upload-btn" data-toggle="modal" data-target="#Upload">Upload</a>
                     </li>
                 </ul>
             </div>
         </nav>
         
         <div class="container-fluid main-container">
-            <div class="row create-row">
+            <div class="row create-row">    
                 <div class="col-md-10 create-content-container row">
+                    <div class="col-md-1">           
                     
-                    <div class="col-md-1">
-                        
                     </div>
-
                     <div class="col-md-7 content view">
                         {{!-- {{#each posts}} --}}
                         <div class="content-item-container border-bottom">
                             <div class="row content-item">
-                                <div class="col header">
-                                    <p class="item-title">Meme #1 <span class="item-username"><a href="profile">@username</a></span></p>
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Share">Share</button>
-                                </div>
+                                <div class="col header item-title">Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title</div>
+                                <div class="col-md-1">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;"> 
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <button class="dropdown-item" type="button">Action</button>
+                                            <button class="dropdown-item" type="button">Another action</button>
+                                            <button class="dropdown-item" type="button">Something else here</button>
+                                        </div>    
+                                    </div>
+                                </div>    
                             </div>
-                            <div class="row content-tag">
-                                <div class="col">
-                                    <a class="item-tag" href="#" id="searchTag">#sampletag1</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag3</a>
-                                </div>
-                            </div>
-                            
+                                                          
                             <div class="row">
                                 <div class="col content-img-container">
-                                    {{!-- change src to "./../post/photo/{{id}}" --}}
-                                    <img src="./../images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                    <img src="spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                </div>
+                            </div>
+                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="profile">@username</a></div>
+                            <div class="row content-tag">
+                                <div class="col">
+                                    <i class="fa fa-tags"></i> Tags:
+                                    <a class="item-tag" href="" id="searchTag">#sample</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTag2</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTagtag3</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag4</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag5</a>
                                 </div>
                             </div>
                         </div>
-                        
+                        {{!-- {{/each}} --}}
+                                
+                        <!--new container-->
                         <div class="content-item-container">
                             <div class="row content-item">
-                                <div class="col header">
-                                    <p class="item-title">Meme #2 <span class="item-username"><a href="profile">@username</a></span>
-                                    </p> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Share">Share</button>
-                                </div>
+                                <div class="col header item-title">Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title</div>
+                                <div class="col-md-1">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;"> 
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <button class="dropdown-item" type="button">Action</button>
+                                            <button class="dropdown-item" type="button">Another action</button>
+                                            <button class="dropdown-item" type="button">Something else here</button>
+                                        </div>    
+                                    </div>
+                                </div>    
                             </div>
-                            <div class="row content-tag">
-                                <div class="col">
-                                    <a class="item-tag" href="#" id="searchTag">#sampletag1</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag3</a>
-                                </div>
-                            </div>
-                            
+                                    
                             <div class="row">
                                 <div class="col content-img-container">
-                                    <img src="./../images/spongebob2.jpg" class="content-img" alt="">
+                                    <img src="spongebob2.jpg" class="content-img" alt="">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="content-item-container">
-                            <div class="row content-item">
-                                <div class="col header">
-                                    <p class="item-title">Meme #3 <span class="item-username"><a href="profile">@username</a></span>
-                                    </p> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Share">Share</button>
-                                </div>
-                            </div>
+                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="profile">@username</a></div>
                             <div class="row content-tag">
                                 <div class="col">
-                                    <a class="item-tag" href="#" id="searchTag">#sampletag1</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag3</a>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col content-img-container">
-                                    <img src="./../images/unique1.jpg" class="content-img" alt="">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="content-item-container">
-                            <div class="row content-item">
-                                <div class="col header">
-                                    <p class="item-title">Meme #4 <span class="item-username"><a href="profile">@username</a></span>
-                                    </p> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Share">Share</button>
-                                </div>
-                            </div>
-                            <div class="row content-tag">
-                                <div class="col">
-                                    <a class="item-tag" href="#" id="searchTag">#sampletag1</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag3</a>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col content-img-container">
-                                    <img src="./../images/unique2.jpg" class="content-img" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-item-container">
-                            <div class="row content-item">
-                                <div class="col header">
-                                    <p class="item-title">Meme #5 <span class="item-username"><a href="profile">@username</a></span>
-                                    </p> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Share">Share</button>
-                                </div>
-                            </div>
-                            <div class="row content-tag">
-                                <div class="col">
-                                    <a class="item-tag" href="#" id="searchTag">#sampletag1</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag3</a>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col content-img-container">
-                                    <img src="./../images/unique3.jpg" class="content-img" alt="">
+                                    <i class="fa fa-tags"></i> Tags:
+                                    <a class="item-tag" href="" id="searchTag">#sample</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTag2</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTagtag3</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag4</a>
+                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag5</a>
                                 </div>
                             </div>
                         </div>
@@ -175,20 +134,19 @@
 
         <!-- Modal -->
         <div class="modal" id="Upload">
-                <div class="modal-dialog">
+            <div class="modal-dialog">
                 <div class="modal-content">
-
                     <!--Modal Header-->
                     <div class="modal-header">
-                    <h4 class="modal-title">Upload Meme</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Upload Meme</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <!--Modal Body-->
                     <div class="modal-body">
                         <form method="POST" action="../post/upload" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Upload Image</label>
+                                <label>Upload Image:</label>
                                 <div class="input-group">
                                     <span class="input-group-btn">
                                         <span class="btn btn-primary btn-file">
@@ -206,7 +164,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="tag-input">Add Tag</label>
+                                <label for="tag-input">Add Tag:</label>
                                 <input type="text" class="form-control tag-input" id="tag-input" placeholder="Add Tag">  
                             </div>
 
@@ -214,74 +172,69 @@
                                 <div class="col tag-field">
                                 </div>
                             </div>
-                            
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-outline-secondary">Public</button>
-                                <button type="button" class="btn btn-outline-secondary">Private</button>
-                            </div>
+                                
+                            <div class="modal-share"> Share option: </div>
+                                <button type="button" class="btn btn-outline-primary">Public</button>
+                                <button type="button" class="btn btn-outline-primary">Private</button>
+                                {{!-- <div class="btn-group" role="group" aria-label="Basic example">
+                                    
+                                </div> --}}
 
-                            <input type="hidden" name="userid" value={{user.username}}>
-
+                            <!--Modal Footer-->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-default" id="post">Submit</button>
+                                <button type="submit" class="btn btn-default submit-btn" id="post">Submit</button>
                             </div>
                         </form>
                     </div>
-
-                    <!--Modal Footer-->
-                    
-                </div>
                 </div>
             </div>
+        </div>
             
-            <!-- The Modal -->
-            <div class="modal" id="Share">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Share the meme</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <form method="POST" action="/post/share">
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="name-input">Share To: </label>
-                                    <input type="text" name="username" class="form-control name-input" id="shareuser" placeholder="Enter username">  
-                                </div>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <input type="submit" class="btn btn-default" id="post" value="Share">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </form>
-
-                        </div>
-                    </div>
+        <!-- Share Modal -->
+        <div class="modal" id="Share">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Share the meme</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
-            <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                    <!-- Modal body -->
+                    <form method="POST" action="../post/share">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="name-input">Share To: </label>
+                                <input type="text" name="username" class="form-control name-input" id="shareuser" placeholder="Enter username">  
                             </div>
-                            <div class="modal-body">
-                                <img src="./../images/spongebob.png" class="img-preview">
-                            </div>
-                            
                         </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-default" id="post" value="Share">
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
+
+        {{!-- Preview Modal --}}
+        <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="./../imgaes/spongebob.png" class="img-preview">
+                    </div>
+                            
+                </div>
+            </div>
+        </div>
     </body>
     
     {{!-- <script>
