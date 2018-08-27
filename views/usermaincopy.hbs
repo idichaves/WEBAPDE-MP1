@@ -54,7 +54,7 @@
                     
                     </div>
                     <div class="col-md-7 content view">
-                        {{#each posts}}
+                        {{#posts}}
                         <div class="content-item-container border-bottom">
                             <div class="row content-item">
                                 <div class="col header item-title">{{title}}</div>
@@ -71,21 +71,19 @@
                             <div class="row content-tag">
                                 <div class="col">
                                     <i class="fa fa-tags"></i> Tags:
-                                    <a class="item-tag" href="#" id="searchTag">#sample</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtag3</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag4</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag5</a>
+                                    {{#tags}}
+                                    <a class="item-tag" href="#" id="searchTag">#{{this}}</a>
+                                    {{/tags}}
                                 </div>
                             </div>
                         </div>
-                        {{/each}}
+                        {{/posts}}
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Modal -->
+        <!-- Upload Modal -->
         <div class="modal" id="Upload">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -97,7 +95,7 @@
 
                     <!--Modal Body-->
                     <div class="modal-body">
-                        <form method="POST" action="../post/upload" enctype="multipart/form-data">
+                        <form method="POST" action="../post/upload" enctype="multipart/form-data" id="uploadform">
                             <div class="form-group">
                                 <label>Upload Image:</label>
                                 <div class="input-group">
@@ -126,11 +124,8 @@
                                 </div>
                             </div>
                                 
-                            <div class="modal-share"> Share option: </div>
-                                <button type="button" class="btn btn-outline-primary">Public</button>
-                                <button type="button" class="btn btn-outline-primary">Private</button>
-
-                            <input type="hidden" name="userid" value="{{username}}">
+                            <input type="checkbox" name="private"> Private
+                            <input type="hidden" name="userid" value="{{user.username}}">
 
                             <!--Modal Footer-->
                             <div class="modal-footer">

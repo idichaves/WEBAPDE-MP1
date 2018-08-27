@@ -99,6 +99,20 @@ module.exports.updateUserPost = function (userid, posts){
     })
 }
 
+module.exports.deleteUserPostWithUsername = function(username, post){
+    return new Promise(function(resolve, reject){
+        User.findOneAndUpdate({
+            username
+        }, {
+            "$pull": {"posts": post._id}
+        }).then((user) => {
+            resolve(user)
+        }, (error) => {
+            reject(error)
+        })
+    })
+}
+
 // THIS NEEDS CONNECTION WITH POST SCHEMA
 module.exports.deleteUserPost = function(userid, postid){
     return new Promise(function(resolve, reject){

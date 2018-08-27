@@ -129,17 +129,23 @@ router.get("/:username", (req, res) => {
 });
 
 // localhost:3000/user/profile/:username
-router.get("/:loggedIn/:username", (req, res) => {
+router.get("/profile/:username", (req, res) => {
     console.log("GET /" + req.params.username)
     var username = req.session.username
+    var mine = false
+
+    if (username === req.params.username)
+        mine = true
 
     //Get user posts
     Post.getUserPosts(req.params.username).then((posts) => {
+        console.log(mine)
         User.getUserWithUsername(req.params.username).then((user) => {
             res.render("profile.hbs", {
                 username,
+                mine,
                 user,
-                posts
+                posts,
             })
         }, (error) => {
             console.log(error)

@@ -55,6 +55,12 @@ router.get("/search", (req, res) => {
     res.render("search.hbs")
 })
 
+router.get("/about", (req, res) => {
+    console.log("GET /about")
+
+    res.render("about.hbs")
+})
+
 router.get("/offline/:username", (req, res) => {
     console.log("GET /offline/" + req.params.username)
 

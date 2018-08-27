@@ -28,17 +28,25 @@ router.use(urlencoder)
 router.post("/upload", upload.single("postimg"), (req, res) => {
     console.log("POST /upload")
 
+    let tag_inputs = req.body.tags
+    console.log(tag_inputs)
+
     var title = req.body.title
     if (req.file.mimetype.toLowerCase() === mime.lookup("jpg") || req.file.mimetype.toLowerCase() === mime.lookup("png")
             || req.file.mimetype.toLowerCase() === mime.lookup("tiff")) {
+
+        var tags = tag_inputs.split(",")
+
+        var public = false
+        if (!req.body.private)
+            public = true
 
         var post = {
             title,
             filename: req.file.filename,
             origfilename: req.file.originalname,
-            //tags:
-            public: true, //EDIT THIS LATER
-            //sharedwith:
+            tags,
+            public,
             postedBy: req.body.userid
         }
 
@@ -74,24 +82,34 @@ router.post("/profileupload", upload.single("postimg"), (req, res) => {
     console.log("POST /profileupload")
 
     var title = req.body.title
+    let tag_inputs = req.body.tags
+    console.log(req.body.private)
 
     if (req.file.mimetype.toLowerCase() === mime.lookup("jpg") || req.file.mimetype.toLowerCase() === mime.lookup("png")
-            || req.file.mimetype.toLowerCase() === mime.lookup("tiff")) {
+        || req.file.mimetype.toLowerCase() === mime.lookup("tiff")) {
+        
+        var tags = tag_inputs.split(",")
+
+        var public = false
+        if (!req.body.private)
+            public = true
 
         var post = {
             title,
             filename: req.file.filename,
             origfilename: req.file.originalname,
-            //tags:
-            public: true, //EDIT THIS LATER
-            //sharedwith:
+            tags,
+            public,
             postedBy: req.body.userid
         }
+
+        var username = req.body.userid
     
         Post.addPost(post).then((newPost) => {
             User.addPostToUser(req.body.userid, newPost).then((user) => {
                 Post.getAllPublicPostsOfUser(user.username).then((posts) => {
                     res.render("profile.hbs", {
+                        username, 
                         user,
                         posts
                     })
@@ -126,25 +144,35 @@ router.post("/edit", urlencoder, (req, res) => {
 
 router.post("/delete", urlencoder, (req, res) => {
     console.log("POST /delete")
-    //console.log(req.body.postid)
+    
 
     //get userid and postid
+    var userid = req.body.userid
+    var postid = req.body.postid
+    console.log(postid + " " + userid)
 
-    // Post.deletePost(postid).then((result) => {
-    //     User.deleteUserPost(userid, postid).then((result2) => {
-    //         res.render("profile.hbs")
-    //     }, (error) => {
-    //         console.log(error)
+    Post.getPost(postid).then((post) => {
+        User.deleteUserPostWithUsername(userid, post).then((user) => {
+            Post.deletePost(postid).then((r) => {
+                Post.getUserPosts(user.username).then((posts) => {
+                    var username = user.username
+                    res.render("profile.hbs", {
+                        username,
+                        user,
+                        posts
+                    })
+                })
+            })
+        }, (error) => {
+            console.log(error)
 
-    //         res.redirect("../user/profile")
-    //     })
-    // }, (error) => {
-    //     console.log(error)
+            res.send("Error")
+        })
+    }, (error) => {
+        console.log(error)
 
-    //     res.redirect("../user/profile")
-    // })
-
-    //res.render("profile.hbs")
+        res.send("Error")
+    })
 })
 
 router.get("/photo/:id", (req, res) => {

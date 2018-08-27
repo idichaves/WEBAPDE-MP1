@@ -12,7 +12,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="./../../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./../../js/upload.js"></script>
         <script>
             $('#userpic').css({
@@ -69,7 +70,7 @@
                                 </div>
                                 
                                 <div class="col-sm-10 details">
-                                    <h5 id="username">@{{user.username}}</h5>
+                                    <h5 id="username">{{user.username}}</h5>
                                     <p id="description">{{user.desc}}</p>
                                 </div>
                                             
@@ -77,22 +78,30 @@
                         </div>
                                 
                         <!--Start-->
-                        {{#each posts}}
+                        {{#if mine}}
+                        {{#posts}}
                         <div class="content-item-container">
                             <div class="row content-item">
                                 <div class="col header item-title">{{title}}</div>
-                                <div class="col-md-1">
+                                {{!-- {{#if mine}} --}}
+                                <div class="col-md-1"> 
                                     <div class="btn-group">
+                                        
                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;"> 
                                         </button>
-                                            
+                                           
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <button class="dropdown-item" type="button">Action</button>
-                                            <button class="dropdown-item" type="button">Another action</button>
-                                            <button class="dropdown-item" type="button">Something else here</button>
+                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#Edit">Edit</button>
+                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#Share">Share</button>
+                                            <form method="POST" action="../../post/delete">
+                                                <input type="hidden" name="userid" value="{{this.postedBy}}">
+                                                <input type="hidden" name="postid" value="{{this._id}}">
+                                                <button class="dropdown-item" type="submit">Delete</button>
+                                            </form>
                                         </div>    
                                     </div>
-                                </div>    
+                                </div>
+                                {{!-- {{/if}}     --}}
                             </div>
                                     
                                                                 
@@ -106,15 +115,41 @@
                             <div class="row content-tag">
                                 <div class="col">
                                     <i class="fa fa-tags"></i> Tags:
-                                    <a class="item-tag" href="#" id="searchTag">#sample</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtag3</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag4</a>
-                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag5</a>
+                                    {{#tags}}
+                                    <a class="item-tag" href="#" id="searchTag">#{{this}}</a>
+                                    {{/tags}}
                                 </div>
                             </div>
                         </div>
-                        {{/each}}
+                        {{/posts}}
+
+                        {{else}}
+
+                        {{#posts}}
+                            <div class="content-item-container">
+                            <div class="row content-item">
+                                <div class="col header item-title">{{title}}</div>
+                            </div>
+                                    
+                                                                
+                            <div class="row">
+                                <div class="col content-img-container">
+                                    <img src="/post/photo/{{_id}}" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                </div>
+                            </div>
+
+                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="#">@{{postedBy}}</a></div>
+                            <div class="row content-tag">
+                                <div class="col">
+                                    <i class="fa fa-tags"></i> Tags:
+                                    {{#tags}}
+                                    <a class="item-tag" href="#" id="searchTag">#{{this}}</a>
+                                    {{/tags}}
+                                </div>
+                            </div>
+                        </div>
+                        {{/posts}}
+                        {{/if}}
                     </div>
                 </div>
             </div>
@@ -133,12 +168,12 @@
 
                     <!--Modal Body-->
                     <div class="modal-body">
-                        <form method="POST" action="post/profileupload" enctype="multipart/form-data">
+                        <form method="POST" action="../../post/profileupload" enctype="multipart/form-data" id="uploadform">
                             <div class="form-group">
                                 <label>Upload Image:</label>
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <span class="btn btn-primary btn-file">
+                                        <span class="btn btn-primary btn-file" id="browsebtn">
                                             Browse... <input type="file" id="imgInp" name="postimg">
                                         </span>
                                     </span>
@@ -166,7 +201,7 @@
                                 <button type="button" class="btn btn-outline-primary">Public</button>
                                 <button type="button" class="btn btn-outline-primary">Private</button>
 
-                            <input type="hidden" name="userid" value="{{user.username}}">
+                            <input type="hidden" name="userid" value="{{username}}">
 
                             <!--Modal Footer-->
                             <div class="modal-footer">
@@ -196,7 +231,6 @@
             </div>
         </div>
     </body>
-    
     <script>
         $(document).ready(()=>{
             $("#search").submit((e)=>{
