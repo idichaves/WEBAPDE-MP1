@@ -33,20 +33,6 @@ module.exports = {
         })
     },
 
-    searchByTag: function(id){
-        Tag.findOne({
-            _id: id
-        }).then((tag) => {
-            console.log("Found tag")
-
-            return tag
-        }, (err) => {
-            console.log("searchByTag" + err)
-
-            return false
-        })
-    },
-
     searchByTagString: function(tag){
         var posts = this.retrievePosts()
 
@@ -85,22 +71,6 @@ module.exports = {
             return result
         }, (err) => {
             console.log("updatePost" + err)
-
-            return false
-        })
-    },
-
-    sharePost: function(id, sharedUser){
-        Post.findOneAndUpdate({
-            _id: id
-        }, {
-            sharedwith:sharedwith.push(sharedUser)
-        }).then((res) => {
-            console.log(res)
-
-            return res
-        }, (err) => {
-            console.log(err)
 
             return false
         })

@@ -22,9 +22,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="mainNav">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <form class="form-inline my-2 my-lg-0" id="search" method="GET" action="search">
-                    <input class="form-control mr-sm-2" type="search" name="searchString" placeholder="Enter tag/s" aria-label="Search" id="searchBox">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Enter tag/s" aria-label="Search" name="searchString" id="searchBox">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
                 </form>
 
@@ -34,17 +34,14 @@
                             <img class="user-icon" src="./../images/avatar.png">  
                         </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                               
-                                <a class="dropdown-item" href="profile">Profile</a>
+                                {{!-- ../user/profile/{{user.username}} --}}
+                                <a class="dropdown-item" href="../user/profile/{{user.username}}">Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout">Log Out</a>
+                                <a class="dropdown-item" href="../user/logout">Log Out</a>
                             </div>
                     </li>
-                </ul>
-
-                <ul class="navbar-nav mr-auto" id="forms">
                     <li class="nav-item active" id="upload">
-                        <a class="nav-link btn btn-md" id="upload-btn" data-toggle="modal" data-target="#Upload">Upload</a>
+                       <a class="nav-link btn btn-md" id="upload-btn" data-toggle="modal" data-target="#Upload">Upload</a>
                     </li>
                 </ul>
             </div>
@@ -57,76 +54,32 @@
                     
                     </div>
                     <div class="col-md-7 content view">
-                        {{!-- {{#each posts}} --}}
+                        {{#each posts}}
                         <div class="content-item-container border-bottom">
                             <div class="row content-item">
-                                <div class="col header item-title">Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title</div>
+                                <div class="col header item-title">{{title}}</div>
                                 <div class="col-md-1">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;"> 
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <button class="dropdown-item" type="button">Action</button>
-                                            <button class="dropdown-item" type="button">Another action</button>
-                                            <button class="dropdown-item" type="button">Something else here</button>
-                                        </div>    
-                                    </div>
                                 </div>    
                             </div>
                                                           
                             <div class="row">
                                 <div class="col content-img-container">
-                                    <img src="./../images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                    <img src="/post/photo/{{_id}}" class="content-img" alt="" data-toggle="modal" data-target=".meme-preview" id="meme-image">
                                 </div>
                             </div>
-                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="profile">@username</a></div>
+                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="/user/profile/{{postedBy}}">@{{postedBy}}</a></div>
                             <div class="row content-tag">
                                 <div class="col">
                                     <i class="fa fa-tags"></i> Tags:
-                                    <a class="item-tag" href="" id="searchTag">#sample</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtag3</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag4</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag5</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sample</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtag3</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag4</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag5</a>
                                 </div>
                             </div>
                         </div>
-                        {{!-- {{/each}} --}}
-                                
-                        <!--new container-->
-                        <div class="content-item-container">
-                            <div class="row content-item">
-                                <div class="col header item-title">Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title</div>
-                                <div class="col-md-1">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;"> 
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <button class="dropdown-item" type="button">Action</button>
-                                            <button class="dropdown-item" type="button">Another action</button>
-                                            <button class="dropdown-item" type="button">Something else here</button>
-                                        </div>    
-                                    </div>
-                                </div>    
-                            </div>
-                                    
-                            <div class="row">
-                                <div class="col content-img-container">
-                                    <img src="./../images/spongebob2.jpg" class="content-img" alt="">
-                                </div>
-                            </div>
-                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="profile">@username</a></div>
-                            <div class="row content-tag">
-                                <div class="col">
-                                    <i class="fa fa-tags"></i> Tags:
-                                    <a class="item-tag" href="" id="searchTag">#sample</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtag3</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag4</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag5</a>
-                                </div>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -149,7 +102,7 @@
                                 <label>Upload Image:</label>
                                 <div class="input-group">
                                     <span class="input-group-btn">
-                                        <span class="btn btn-primary btn-file">
+                                        <span class="btn btn-file" id="browsebtn">
                                             Browse... <input type="file" id="imgInp" name="postimg">
                                         </span>
                                     </span>
@@ -176,9 +129,8 @@
                             <div class="modal-share"> Share option: </div>
                                 <button type="button" class="btn btn-outline-primary">Public</button>
                                 <button type="button" class="btn btn-outline-primary">Private</button>
-                                {{!-- <div class="btn-group" role="group" aria-label="Basic example">
-                                    
-                                </div> --}}
+
+                            <input type="hidden" name="userid" value="{{username}}">
 
                             <!--Modal Footer-->
                             <div class="modal-footer">
@@ -223,13 +175,13 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">{{title}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img src="./../imgaes/spongebob.png" class="img-preview">
+                        <img src="/post/photo/{{_id}}" class="img-preview">
                     </div>
                             
                 </div>

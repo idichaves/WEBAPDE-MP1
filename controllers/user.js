@@ -4,18 +4,31 @@ const crypto = require("crypto")
 const User = require("../model/user")
 const Post = require("../model/post")
 const bodyparser = require("body-parser")
+const session = require("express-session")
+const cookieparser = require("cookie-parser")
 
 const urlencoder = bodyparser.urlencoded({
     extended: false
 })
 
 router.use(urlencoder)
+router.use(cookieparser())
+router.use(session({
+    secret: "supersecret",
+	name : "memeify",
+	resave : true,
+	saveUninitialized : true,
+	cookie: {
+		//expire: Date.now()+1000*10 realtime
+		maxAge: 1000*60*60*24*7*3
+	}
+}))
 
 //localhost:3000/user/login
 router.post("/login", urlencoder, (req, res) => {
     console.log("POST /user/login")
 
-    if (req.body.username !== "" && req.body.password !== ""){
+    if (req.body.username !== "" && req.body.password !== "") {
         var username = req.body.username
         var password = req.body.password
         var hashedpassword = crypto.createHash("md5").update(password).digest("hex")
@@ -23,8 +36,16 @@ router.post("/login", urlencoder, (req, res) => {
         User.getUserWithUsername(username).then((user) => {
             if (user) {
                 if (hashedpassword === user.password){
-                    res.render("usermaincopy.hbs", {
-                        user
+                    req.session.username = username
+                    Post.getAllPublicPosts().then((posts) => {
+                        res.render("usermaincopy.hbs", {
+                            user,
+                            posts
+                        })
+                    }, (error) => {
+                        console.log(error)
+
+                        res.render("usermaincopy.hbs")
                     })
                 } else {
                     res.redirect("../loginpage")
@@ -33,13 +54,12 @@ router.post("/login", urlencoder, (req, res) => {
                 res.redirect("../register")
             }
         }, (error) => {
+            console.log(error)
+
             res.send("Error! Please try again")
         })
     } else {
         res.redirect("../loginpage")
-        // res.render("login.hbs", {
-        //     msg: "Please enter credentials on the field(s)!"
-        // })
     }
 })
 
@@ -82,26 +102,56 @@ router.post("/register", urlencoder, (req, res) => {
     }    
 })
 
-router.get("/profile", (req, res) => {
-    console.log("GET /profile")
-
-    //Get user posts
-    
-    res.render("profile.hbs")
-});
-
-router.get("/usermaincopy", (req, res) => {
-    console.log("GET /usermaincopy")
-
-    //Get public posts
-    
-    res.render("usermaincopy.hbs")
-});
-
 router.get("/logout", (req, res) => {
     console.log("GET /logout")
     
     res.render("logout.hbs")
+});
+
+router.get("/:username", (req, res) => {
+    console.log("GET /" + req.params.username)
+
+    //Get public posts
+    var username = req.params.username
+
+    Post.getAllPublicPosts().then((posts) => {
+        User.getUserWithUsername(username).then((user) => {
+            res.render("usermaincopy.hbs", {
+                user,
+                posts
+            })
+        }) 
+    }, (error) => {
+        console.log(error)
+
+        res.send("Error")
+    })
+});
+
+// localhost:3000/user/profile/:username
+router.get("/:loggedIn/:username", (req, res) => {
+    console.log("GET /" + req.params.username)
+    var username = req.session.username
+
+    //Get user posts
+    Post.getUserPosts(req.params.username).then((posts) => {
+        User.getUserWithUsername(req.params.username).then((user) => {
+            res.render("profile.hbs", {
+                username,
+                user,
+                posts
+            })
+        }, (error) => {
+            console.log(error)
+
+            res.send("Error")
+        })
+        
+    }, (error) => {
+        console.log(error)
+
+        res.send("Error")
+    })
 });
 
 // router.get("/:id", (req, res) => {

@@ -7,13 +7,13 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./../css/style.css" type="text/css">
-        <link rel="stylesheet" href="./../css/user.css" type="text/css">
+        <link rel="stylesheet" href="./../../css/style.css" type="text/css">
+        <link rel="stylesheet" href="./../../css/user.css" type="text/css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Asap|Ubuntu" rel="stylesheet">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script type="text/javascript" src="./../js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./../js/upload.js"></script>
+        <script type="text/javascript" src="./../../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./../../js/upload.js"></script>
         <script>
             $('#userpic').css({
                 'width': $('#userpic').height(),
@@ -23,7 +23,7 @@
     
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav_bar">
-            <a class="navbar-brand" href="usermaincopy" id="sitename">Memeify</a>
+            <a class="navbar-brand" href="../../user/{{username}}" id="sitename">Memeify</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,14 +37,13 @@
                 <ul class="navbar-nav mr-auto" id="forms">
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-                            <img class="user-icon" src="./../images/avatar.png">  
+                            <img class="user-icon" src="./../../images/avatar.png">  
                         </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                               
-                                <a class="dropdown-item" href="profile">Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout">Log Out</a>
-                            </div>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">       
+                            <a class="dropdown-item" href="../../user/profile/{{username}}">Profile</a>
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="../../user/logout">Log Out</a>
+                        </div>
                     </li>
 
 
@@ -66,21 +65,22 @@
                         <div class="content-item-container border-bottom">
                             <div class="row content-item">                                                           
                                 <div class="col-sm-2 pic" style="bottom: 10%;">
-                                    <img src="./../images/user.png" id="userpic">
+                                    <img src="./../../images/user.png" id="userpic">
                                 </div>
                                 
                                 <div class="col-sm-10 details">
-                                    <h5 id="username">@carljames</h5>
-                                    <p id="description">Hello, I am Derp.</p>
+                                    <h5 id="username">@{{user.username}}</h5>
+                                    <p id="description">{{user.desc}}</p>
                                 </div>
                                             
                             </div>                            
                         </div>
                                 
                         <!--Start-->
-                        <div class="content-item-container border-bottom">
+                        {{#each posts}}
+                        <div class="content-item-container">
                             <div class="row content-item">
-                                <div class="col header item-title">Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title</div>
+                                <div class="col header item-title">{{title}}</div>
                                 <div class="col-md-1">
                                     <div class="btn-group">
                                         <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;"> 
@@ -98,58 +98,23 @@
                                                                 
                             <div class="row">
                                 <div class="col content-img-container">
-                                    <img src="./../images/spongebob.png" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                    <img src="/post/photo/{{_id}}" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
                                 </div>
                             </div>
 
-                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="profile">@username</a></div>
+                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="#">@{{postedBy}}</a></div>
                             <div class="row content-tag">
                                 <div class="col">
                                     <i class="fa fa-tags"></i> Tags:
-                                    <a class="item-tag" href="" id="searchTag">#sample</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtag3</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag4</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag5</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sample</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTag2</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtag3</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag4</a>
+                                    <a class="item-tag" href="#" id="searchTag">#sampleTagtagtag5</a>
                                 </div>
                             </div>
                         </div>
-                                
-                        <!--new container-->
-                        <div class="content-item-container">
-                            <div class="row content-item">
-                                <div class="col header item-title">Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title Meme title</div>
-                                <div class="col-md-1">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" style="background-color:white;"> 
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <button class="dropdown-item" type="button">Action</button>
-                                            <button class="dropdown-item" type="button">Another action</button>
-                                            <button class="dropdown-item" type="button">Something else here</button>
-                                        </div>    
-                                    </div>
-                                </div>    
-                            </div>
-                                    
-                            <div class="row">
-                                <div class="col content-img-container">
-                                    <img src="./../images/spongebob2.jpg" class="content-img" alt="">
-                                </div>
-                            </div>
-
-                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="profile">@username</a></div>
-                            <div class="row content-tag">
-                                <div class="col">
-                                    <i class="fa fa-tags"></i> Tags:
-                                    <a class="item-tag" href="" id="searchTag">#sample</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtag3</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag4</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag5</a>
-                                </div>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -200,6 +165,8 @@
                             <div class="modal-share"> Share option: </div>
                                 <button type="button" class="btn btn-outline-primary">Public</button>
                                 <button type="button" class="btn btn-outline-primary">Private</button>
+
+                            <input type="hidden" name="userid" value="{{user.username}}">
 
                             <!--Modal Footer-->
                             <div class="modal-footer">

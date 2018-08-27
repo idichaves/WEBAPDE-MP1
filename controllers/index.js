@@ -2,7 +2,9 @@ const express = require("express")
 const path = require("path")
 const app = express()
 const router = express.Router()
+const cookieparser = require("cookie-parser")
 const User = require("../model/user")
+const session = require("express-session")
 const Post = require("../model/post")
 
 router.use("/post", require("./post"))
@@ -58,9 +60,11 @@ router.get("/offline/:username", (req, res) => {
 
     var username = req.params.username
     Post.getAllPublicPostsOfUser(username).then((posts) => {
-        res.render("offlineprofile.hbs", {
-            username,
-            posts
+        User.getUserWithUsername(username).then((user) => {
+            res.render("offlineprofile.hbs", {
+                user,
+                posts
+            })
         })
     }, (error) => {
         console.log(error)

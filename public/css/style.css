@@ -393,9 +393,9 @@ form#search{
     width: 100%;
 }
 
-#meme-image:hover{
+/* #meme-image:hover{
    cursor: pointer; 
-}
+} */
 
 #login-button{
     border-radius:5px;
@@ -432,13 +432,10 @@ form#search{
 .sample{
   width: 100%;
   text-align: right;
-   
-
 }
 
 
 .sampletxt{
-  
   font-size: 14;
   color: #999999;
   line-height: 1.5;

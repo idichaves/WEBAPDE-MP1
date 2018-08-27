@@ -124,7 +124,7 @@ module.exports.updatePost = function(id, title, tags){
         Post.findOneAndUpdate({
             _id: id
         }, {
-            title,
+            "$set": {"title": title},
             tags
         }).then((editedPost) =>{
             resolve(editedPost)

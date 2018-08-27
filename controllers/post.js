@@ -36,21 +36,33 @@ router.post("/upload", upload.single("postimg"), (req, res) => {
             title,
             filename: req.file.filename,
             origfilename: req.file.originalname,
-            public: true, //EDIT THIS LATER
             //tags:
+            public: true, //EDIT THIS LATER
+            //sharedwith:
             postedBy: req.body.userid
         }
+
+        var user = req.body.userid
     
         Post.addPost(post).then((newPost) => {
-            User.addPostToUser(req.body.userid, newPost).then((user) => {
-                res.render("usermaincopy.hbs")
+            User.addPostToUser(user, newPost).then((user) => {
+                Post.getAllPublicPosts().then((posts) => {
+                    res.render("usermaincopy.hbs", {
+                        user,
+                        posts
+                    })
+                }, (error) => {
+                    console.log(error)
+                    res.send("Error")
+                })
             }, (error) => {
                 console.log(error)
 
-                res.redirect("../user/usermaincopy")
+                res.send("Error")
             })
         }, (error) => {
             console.log(error)
+            
             res.send("Error")
         })
     } else {
@@ -71,12 +83,19 @@ router.post("/profileupload", upload.single("postimg"), (req, res) => {
             filename: req.file.filename,
             origfilename: req.file.originalname,
             //tags:
+            public: true, //EDIT THIS LATER
+            //sharedwith:
             postedBy: req.body.userid
         }
     
         Post.addPost(post).then((newPost) => {
             User.addPostToUser(req.body.userid, newPost).then((user) => {
-                res.render("profile.hbs")
+                Post.getAllPublicPostsOfUser(user.username).then((posts) => {
+                    res.render("profile.hbs", {
+                        user,
+                        posts
+                    })
+                })
             }, (error) => {
                 console.log(error)
 
@@ -102,7 +121,7 @@ router.post("/edit", urlencoder, (req, res) => {
     console.log("POST /edit")
     
     //res.render("profile.hbs")
-    Post.updatePost
+    // Post.updatePost
 })
 
 router.post("/delete", urlencoder, (req, res) => {
@@ -129,7 +148,7 @@ router.post("/delete", urlencoder, (req, res) => {
 })
 
 router.get("/photo/:id", (req, res) => {
-    console.log(req.params.id)
+    console.log("GET / " + req.params.id)
 
     Post.getPost(req.params.id).then((post) => {
         fs.createReadStream(path.resolve(UPLOAD_PATH, post.filename)).pipe(res)
