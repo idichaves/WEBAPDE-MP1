@@ -104,6 +104,8 @@ router.post("/register", urlencoder, (req, res) => {
 
 router.get("/logout", (req, res) => {
     console.log("GET /logout")
+
+    req.session.destroy()
     
     res.render("logout.hbs")
 });
@@ -139,14 +141,30 @@ router.get("/profile/:username", (req, res) => {
 
     //Get user posts
     Post.getUserPosts(req.params.username).then((posts) => {
-        console.log(mine)
         User.getUserWithUsername(req.params.username).then((user) => {
-            res.render("profile.hbs", {
-                username,
-                mine,
-                user,
-                posts,
-            })
+            if (mine){
+                Post.getAllPosts().then((allposts) => {
+                    for (let i = 0; i < allposts.length; i++){
+                        for (let j = 0; j < allposts[i].sharedwith.length; j++)
+                            if (allposts[i].sharedwith[j] === username){
+                                posts.push(allposts[i])
+                            }
+                    }
+                    res.render("profile.hbs", {
+                        username,
+                        mine,
+                        user,
+                        posts,
+                    })
+                })
+            } else{
+                res.render("profile.hbs", {
+                    username,
+                    mine,
+                    user,
+                    posts,
+                }) 
+            }
         }, (error) => {
             console.log(error)
 

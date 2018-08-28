@@ -118,14 +118,15 @@ module.exports.getPostsWithTag = function(tagName){
 
 //THIS NEEDS CONNECTION WITH USER SCHEMA
 //CALL THE CONNECTION WITH USER SCHEMA IN CONTROLLERS
-module.exports.updatePost = function(id, title, tags){
+module.exports.updatePost = function(id, title, tags, public){
     return new Promise(function(resolve, reject){
         //How to implement the update user post?
         Post.findOneAndUpdate({
             _id: id
         }, {
             "$set": {"title": title},
-            tags
+            "$set": {"public": public},
+            "$set": {"tags": tags}
         }).then((editedPost) =>{
             resolve(editedPost)
         }, (error) => {

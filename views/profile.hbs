@@ -83,7 +83,6 @@
                         <div class="content-item-container">
                             <div class="row content-item">
                                 <div class="col header item-title">{{title}}</div>
-                                {{!-- {{#if mine}} --}}
                                 <div class="col-md-1"> 
                                     <div class="btn-group">
                                         
@@ -91,8 +90,8 @@
                                         </button>
                                            
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#Edit">Edit</button>
-                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#Share">Share</button>
+                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#e{{this._id}}">Edit</button>
+                                            <button class="dropdown-item" type="button" data-toggle="modal" data-target="#s{{this._id}}">Share</button>
                                             <form method="POST" action="../../post/delete">
                                                 <input type="hidden" name="userid" value="{{this.postedBy}}">
                                                 <input type="hidden" name="postid" value="{{this._id}}">
@@ -101,7 +100,6 @@
                                         </div>    
                                     </div>
                                 </div>
-                                {{!-- {{/if}}     --}}
                             </div>
                                     
                                                                 
@@ -124,7 +122,6 @@
                         {{/posts}}
 
                         {{else}}
-
                         {{#posts}}
                             <div class="content-item-container">
                             <div class="row content-item">
@@ -134,7 +131,7 @@
                                                                 
                             <div class="row">
                                 <div class="col content-img-container">
-                                    <img src="/post/photo/{{_id}}" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                    <img src="/post/photo/{{_id}}" class="content-img" alt=""  data-toggle="modal" data-target="#p{{_id}}" id="meme-image">
                                 </div>
                             </div>
 
@@ -197,10 +194,7 @@
                                 </div>
                             </div>
 
-                            <div class="modal-share"> Share option: </div>
-                                <button type="button" class="btn btn-outline-primary">Public</button>
-                                <button type="button" class="btn btn-outline-primary">Private</button>
-
+                            <input type="checkbox" name="private">Private
                             <input type="hidden" name="userid" value="{{username}}">
 
                             <!--Modal Footer-->
@@ -212,24 +206,105 @@
                 </div>
             </div>
         </div>
+
+        {{#posts}}
+        {{!-- Edit Modal --}}
+        <div class="modal" id="e{{this._id}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!--Modal Header-->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Meme</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!--Modal Body-->
+                    <div class="modal-body">
+                        <form method="POST" action="../../post/edit" id="editform">
+                            <div class="form-group">
+                                <label for="name-input">Meme Name: </label>
+                                <input type="text" name="edittitle" class="form-control name-input" id="name-input" placeholder="{{this.title}}">  
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tag-input">Add Tag</label>
+                                <input type="text" class="form-control tag-input" id="tag-input" placeholder="Add Tag">  
+                            </div>
+
+                            <div class="row">
+                                <div class="col tag-field">
+                                    {{#tags}}
+                                    <a class='btn added-tag'>{{this}}</a>
+                                    {{/tags}}
+                                </div>
+                            </div>
+
+                            <input type="checkbox" name="private">Private
+                            <input type="hidden" name="postid" value="{{this._id}}">
+
+                            <!--Modal Footer-->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-default submit-btn" id="edit">Save</button>
+                            </div>
+                        </form>
+                    </div>   
+                </div>
+            </div>
+        </div>
+        {{/posts}}
+
+        <!-- Share Modal -->
+        {{#posts}}
+        <div class="modal" id="s{{this._id}}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Share the meme</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <form method="POST" action="../../post/share">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="name-input">Share To: </label>
+                                <input type="text" name="username" class="form-control name-input" id="shareuser" placeholder="Enter username">  
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="postid" id="post_id" value="{{this._id}}">
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-default submit-btn" id="share" value="Share">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{/posts}}
         
         {{!-- Preview Modal --}}
-        <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        {{#posts}}
+        <div class="modal fade meme-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="p{{_id}}">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">{{title}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img src="./../images/spongebob.png" class="img-preview">
+                        <img src="/post/photo/{{this._id}}" class="img-preview">
                     </div>
                             
                 </div>
             </div>
         </div>
+        {{/posts}}
     </body>
     <script>
         $(document).ready(()=>{

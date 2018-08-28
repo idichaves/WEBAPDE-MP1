@@ -132,20 +132,51 @@ router.post("/profileupload", upload.single("postimg"), (req, res) => {
 router.post("/share", urlencoder, (req, res) => {
     console.log("POST /share")
 
-    //res.render("profile.hbs")
+    var shareduser = req.body.username
+    var postid = req.body.postid
+    var username = req.session.username
+
+    Post.getPost(postid).then((post) => {
+       var sharedUsers = post.sharedwith
+       var notYetShared = true
+       for (let i = 0; i < sharedUsers.length; i++){
+            if (sharedUsers[i] === shareduser)
+                notYetShared = false
+       }
+       if (notYetShared){
+            Post.sharePost(postid, shareduser).then((result) => {
+                res.redirect("../user/profile/" + username)
+            }, (error) => {
+                console.log(error)
+            })
+       } else{
+           res.redirect("../user/profile/" + username)
+       }
+    })
+    
 })
 
 router.post("/edit", urlencoder, (req, res) => {
     console.log("POST /edit")
+
+    var postid = req.body.postid
+    var title = req.body.edittitle
+    let tag_inputs = req.body.tags
+    var tags = tag_inputs.split(",")
+    var username = req.session.username
+    var public = false
+
+    if (!req.body.private) //if private is checked, public will be false
+        public = true
     
-    //res.render("profile.hbs")
-    // Post.updatePost
+    Post.updatePost(postid, title, tags, public).then((post) => {
+        res.redirect("../user/profile/" + username)
+    })
 })
 
 router.post("/delete", urlencoder, (req, res) => {
     console.log("POST /delete")
     
-
     //get userid and postid
     var userid = req.body.userid
     var postid = req.body.postid

@@ -11,14 +11,34 @@ router.use("/post", require("./post"))
 router.use("/user", require("./user"))
 router.use("/tag", require("./tag"))
 
+router.use(cookieparser())
+router.use(session({
+    secret: "supersecret",
+	name : "memeify",
+	resave : true,
+	saveUninitialized : true,
+	cookie: {
+		//expire: Date.now()+1000*10 realtime
+		maxAge: 1000*60*60*24*7*3
+	}
+}))
+
 router.get("/", (req, res) => {
     console.log("GET /")
 
-    Post.getAllPublicPosts().then((posts) => {
-        res.render("index.hbs", {
-            posts
+    var username = req.session.username
+
+    console.log(username)
+
+    if (!username){
+        Post.getAllPublicPosts().then((posts) => {
+            res.render("index.hbs", {
+                posts
+            })
         })
-    })
+    } else{
+        res.redirect("../user/" + username)
+    }
 
     // res.render("index.hbs")
 })
