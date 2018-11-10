@@ -37,13 +37,6 @@ $(document).ready( function() {
     });
 
     var tag_inputs = []
-    var tags_existing = []
-    var editTags = []
-    tags_existing = $('.tag-field').children()
-    tags_existing.each(function(){
-        editTags.push($(this).text())
-    })
-    
 
     $('.tag-input').keyup(function(e) {
         var tag_input = $('.tag-input').val();
@@ -74,7 +67,6 @@ $(document).ready( function() {
     $(document).on('click', '.added-tag', function() {
         $(this).remove();
         tag_inputs.splice(tag_inputs.indexOf(tag_input), 1)
-        editTags.splice(editTags.indexOf(tag_input), 1)
     })
 
     $(document).on('click', '.content-img', function() {
@@ -86,9 +78,9 @@ $(document).ready( function() {
     $("#uploadform").submit(function(){
         var tagToSend = ""
 
-        for (let i = 0; i < tags_existing.length; i++){
-            if (i == tags_existing.length - 1)
-                tagToSend = tagToSend.concat(tag_existing[i])
+        for (let i = 0; i < tag_inputs.length; i++){
+            if (i == tag_inputs.length - 1)
+                tagToSend = tagToSend.concat(tag_inputs[i])
             else
                 tagToSend = tagToSend.concat(tag_inputs[i] + ",")
         }
@@ -96,29 +88,6 @@ $(document).ready( function() {
                    .attr("name", "tags")
                    .attr("value", tagToSend)
                    .appendTo("#uploadform")
-    })
-
-    $("#editform").submit(function(){
-        var tagToSend = ""
-
-        for (let i = 0; i < tag_inputs.length; i++){
-            if (i == tag_inputs.length - 1)
-                tagToSend = tagToSend.concat(tag_inputs[i] + ",")
-            else
-                tagToSend = tagToSend.concat(tag_inputs[i] + ",")
-        }
-
-        for (let j = 0; j < editTags.length; j++){
-            if (j == editTags.length - 1)
-                tagToSend = tagToSend.concat(editTags[i])
-            else
-                tagToSend = tagToSend.concat(editTags[i] + ",")
-        }
-        
-        $("<input/>").attr("type", "text")
-                   .attr("name", "tags")
-                   .attr("value", tagToSend)
-                   .appendTo("#editform")
     })
     // $("#post").on('click',function(e){
     //     e.preventDefault()

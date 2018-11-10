@@ -64,33 +64,34 @@
                         </div>
                                 
                         <!--Start-->
-                        {{#each posts}}
-                        <div class="content-item-container border-bottom">
+                        {{#posts}}
+                        <div class="content-item-container">
                             <div class="row content-item">
                                 <div class="col header item-title">{{title}}</div>
                                 <div class="col-md-1">
-                                </div>
+                                </div>    
                             </div>
-                                                         
+                            
+                                                        
                             <div class="row">
                                 <div class="col content-img-container">
-                                    <img src="/post/photo/{{_id}}" class="content-img" alt=""  data-toggle="modal" data-target=".meme-preview" id="meme-image">
+                                    <img src="/post/photo/{{_id}}" class="content-img" alt=""  data-toggle="modal" data-target="#p{{_id}}" id="meme-image">
                                 </div>
                             </div>
 
-                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="">@{{postedBy}}</a></div>
+                            {{!-- user/{{postedby}} --}}
+                            <div class="item-username"><i class="fa fa-user-circle"></i> <a href="offline/{{postedBy}}">@{{postedBy}}</a></div>
+
                             <div class="row content-tag">
                                 <div class="col">
                                     <i class="fa fa-tags"></i> Tags:
-                                    <a class="item-tag" href="" id="searchTag">#sample</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTag2</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtag3</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag4</a>
-                                    <a class="item-tag" href="" id="searchTag">#sampleTagtagtag5</a>
+                                    {{#tags}}
+                                    <a class="item-tag" href="" id="searchTag">#{{this}}</a>
+                                    {{/tags}}
                                 </div>
                             </div>
                         </div>
-                        {{/each}}
+                        {{/posts}}
                     </div>
                 </div>
             </div>

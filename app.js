@@ -11,6 +11,7 @@ const app = express();
 const port = 3000;
 
 mongoose.Promise = global.Promise
+// @ds233212.mlab.com:33212/memeify
 mongoose.connect("mongodb://localhost:27017/memeify", {
     useNewUrlParser: true
 });
